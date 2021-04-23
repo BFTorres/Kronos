@@ -26,12 +26,12 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  req.session.destroy() //session
+  req.session.destroy() //!session
   res.redirect('/')
 })
 
 router.get('/main', (req, res, next) => {
-  let user = req.loggedInUser; //session
+  let user = req.loggedInUser; //!session
 
 
 
@@ -72,5 +72,33 @@ router.post('/signup', (req, res) => {
 })
 
 router.post('/login', )
+
+
+
+
+// !CUSTOM MIDDLEWARES
+// !userInfo
+
+const authorize = (req, res, next) => {
+  /*let 
+  if (req.session.userInfo){
+    next()
+} else {
+  res.redirect('/signin)
+}
+*/
+}
+
+// !Check authorization! CM
+
+// !change password?
+
+// !delete user?
+
+//
+
+
+
+
 
 module.exports = router;
