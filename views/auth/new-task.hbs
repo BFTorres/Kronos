@@ -1,5 +1,5 @@
 
-<form action="/signup" method="POST">
+<form action="/new-task" method="POST">
   <div class="form">
     <label class="form-label" >Name</label>
     <input type="text" class="form-control" name="username">
@@ -29,9 +29,9 @@
   <button type="submit">Sign Up</button>
 </div>
 
-{{#if msg}}
+{{#if errorMessage}}
 <br>
 <div class="alert alert-danger" role="alert">
-{{msg}}
+{{errorMessage}}
 </div>
 {{/if}}
