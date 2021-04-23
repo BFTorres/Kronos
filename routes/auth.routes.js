@@ -40,7 +40,7 @@ router.get('/main', (req, res, next) => {
 
 // POST ROUTES 
 
-router.post('/signup', (req, res) => {
+router.post('/signup', authorizeInput, (req, res) => {
   const { username, password, confPassword } = req.body //confPassword
   let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
     if (!regexPw.test(password)) {
@@ -69,7 +69,11 @@ router.post('/signup', (req, res) => {
 
 })
 
-router.post('/login', )
+router.post('/login', authorizeInput, (req, res, next) => {
+  const { username, password } = req.body
+  User.findOne({ username: username})
+      .then
+})
 
 
 
@@ -77,14 +81,18 @@ router.post('/login', )
 // !CUSTOM MIDDLEWARES
 // !userInfo
 
-const authorize = (req, res, next) => {
-  /*let 
-  if (req.session.userInfo){
-    next()
+const authorizeInput = (req, res, next) => {
+  let username = req.body.username
+  let password = req.body.password
+ // if (req.session.userInfo){
+   if (!username || !password){
+      res.render('index', {msg: 'please fill in all fields'})
+   
+    
 } else {
-  res.redirect('/signin)
+  next()
+  //res.redirect('/signin)
 }
-*/
 }
 
 // !Check authorization! CM
