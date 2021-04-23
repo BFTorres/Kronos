@@ -2,7 +2,7 @@
 <p>Welcome Ironhacker!</p>
 
 <form action="/" method="POST">
-  <div class="mb-3">
+  <div class="form">
     <label class="form-label" >Name</label>
     <input type="text" class="form-control" name="username">
   </div>
@@ -10,13 +10,23 @@
     <label  class="form-label">Password</label>
     <input type="password" class="form-control" name="password">
   </div>
-  <div class="mb-3">
-    <label  class="form-label">Department</label>
-    <input type="text" class="form-control" name="department">
+<div class="input-group-prepend">
+    <label class="input-group-text" for="department">Department</label>
   </div>
-  <div class="mb-3">
-    <label  class="form-label">User Type</label>
-    <input type="text" class="form-control" name="userType">
-  </div>
+  <select class="custom-select" id="department" name="department" multiple>
+    <option selected>Choose.......................................</option>
+  {{#each departments}}
+    <option value="{{this}}">{{this}}</option>
+  {{/each}}
+  </select>
+</div>
+<div class="mb-3 form-control">
+  <label  class="form-label">User Type</label> <br>
+  <label for="">Manager</label>
+   <input type="radio" name="userType" value="Manager"  >
+   <label for="">Staff</label>
+   <input type="radio" name="userType" value="Staff" >
+   </div>
+    
   <button type="submit">Sign Up</button>
 </div>

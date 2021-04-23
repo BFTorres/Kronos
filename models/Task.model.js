@@ -2,13 +2,23 @@ const { Schema, model } = require("mongoose");
 
 const taskSchema = new Schema({
   title: String,
+
   description: String,
+
   department: {
+    type: String,
+    enum: ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
+  },
+  status: {
+    type: String,
+    enum: ["Todo", "In Progres", "Done"]
+  },
+  asignedTo: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  asignUser: {
-    type: String,
+  asignedBy: {
+    type: Schema.Types.ObjectId,
     ref: 'User'
   }
 });

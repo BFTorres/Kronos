@@ -3,9 +3,10 @@ const router = require("express").Router();
 const UserModel = require("../models/User.model")
 const TaskModel = require("../models/Task.model")
 /* GET home page */
-// const departments = ['FrontOficce', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
+departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
 router.get("/", (req, res, next) => {
-  res.render("index")
+  if (req.loggedInUser) res.redirect('/main');
+  else res.render("index", { departments });
 });
 
 router.post('/', (req, res, next) => {

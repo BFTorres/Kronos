@@ -17,9 +17,7 @@ router.get('/profile', (req, res) => {
   res.render("/auth/profile.hbs", { user });
 })
 
-router.get('/signup', (req, res) => {
-  res.render('auth/signup.hbs')
-})
+
 
 router.get('/login', (req, res) => {
   res.render('')
