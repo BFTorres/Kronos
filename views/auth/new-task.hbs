@@ -1,12 +1,12 @@
 
 <form action="/new-task" method="POST">
   <div class="form">
-    <label class="form-label" >Name</label>
-    <input type="text" class="form-control" name="username">
+    <label class="form-label" >Title</label>
+    <input type="text" class="form-control" name="title">
   </div>
     <div class="mb-3">
-    <label  class="form-label">Password</label>
-    <input type="password" class="form-control" name="password">
+    <label  class="form-label">description</label>
+    <input type="text" class="form-control" name="description">
   </div>
 <div class="input-group-prepend">
     <label class="input-group-text" for="department">Department</label>
@@ -18,20 +18,21 @@
   {{/each}}
   </select>
 </div>
-<div class="mb-3 form-control">
-  <label  class="form-label">User Type</label> <br>
-  <label for="">Manager</label>
-   <input type="radio" name="userType" value="Manager"  >
-   <label for="">Staff</label>
-   <input type="radio" name="userType" value="Staff" >
-   </div>
+<div> 
+<select class="custom-select" id="inputGroupSelect01" name="asignedTo" multiple>
+    <option selected>Choose...</option>
+  {{#each data}}
+    <option value="{{this.id}}">{{this.username}}</option>
+  {{/each}}
+  </select>
+</div>
     
-  <button type="submit">Sign Up</button>
+  <button type="submit">Create</button>
 </div>
 
-{{#if errorMessage}}
+{{#if msg}}
 <br>
 <div class="alert alert-danger" role="alert">
-{{errorMessage}}
+{{msg}}
 </div>
 {{/if}}
