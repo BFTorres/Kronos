@@ -1,7 +1,10 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
-const User = require('')
-const Admin = require('')
+const UserModel = require("../models/User.model")
+const TaskModel = require("../models/Task.model")
+
+
+departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
 
 
 
@@ -20,12 +23,12 @@ router.get('/profile', (req, res) => {
 
 
 router.get('/login', (req, res) => {
-  res.render('')
+  res.render('/')
 })
 
-router.get('/logout', (req, res) => {
-  req.session.destroy() //!session
-  res.redirect('/')
+router.get('/signup', (req, res) => {
+
+  res.render("auth/signup", { departments });
 })
 
 router.get('/main', (req, res, next) => {
@@ -40,33 +43,18 @@ router.get('/main', (req, res, next) => {
 
 // POST ROUTES 
 
-router.post('/signup', (req, res) => {
-  const { username, password, confPassword } = req.body //confPassword
-  let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
-  if (!regexPw.test(password)) {
-    res.render('index', { msg: 'Password must be 6 characters long, must have a number, and an uppercase Letter' })
-    return
-  }
-  if (password !== confirmPassword) {
-    res.render('index', { msg: 'Passwords do not match' })
-    return
-  }
-  let salt = bcrypt.genSaltSync(12)
-  let hash = bcrypt.hashSync(password, salt)
+router.post('/signup', (req, res, next) => {
 
-  User.findOne({ username: username })
-    .then(user => {
-      if (user) {
-        res.render('index', { msg: 'username is taken' })
-      } else {
-        User.create({ username, password: hash })
-          .then(() => {
-            res.render("index.hbs", { msg: "signup has been successful" })
-          }).catch(err => next(err));
-      }
+  const { username, password, department, userType } = req.body
 
+  UserModel.create({ username, password, department, userType })
+    .then((response) => {
+      console.log('User Added !')
+      res.redirect('/')
     })
+    .catch((err) => {
 
+    });
 })
 
 router.post('/login',)
