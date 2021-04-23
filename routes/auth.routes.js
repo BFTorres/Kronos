@@ -11,7 +11,7 @@ const Admin = require('')
 
 // GET ROUTES
 
-
+//!profile, insert multiple profiles
 router.get('/profile', (req, res) => {
   let user = req.loggedInUser;
   res.render("/auth/profile.hbs", { user });
@@ -32,8 +32,6 @@ router.get('/logout', (req, res) => {
 
 router.get('/main', (req, res, next) => {
   let user = req.loggedInUser; //!session
-
-
 
 
 })
