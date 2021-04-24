@@ -15,10 +15,10 @@ router.get('/profile', (req, res) => {
 })
 
 
-
-router.get('/login', (req, res) => {
-  res.render('/')
-})
+// !NOt Needed cause is the '/' route or "index.hbs"
+// router.get('/login', (req, res) => {
+//   res.render('/')
+// })
 
 router.get('/signup', (req, res) => {
 

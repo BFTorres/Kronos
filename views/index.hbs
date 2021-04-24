@@ -3,13 +3,16 @@
 
 
 {{!-- to be edited --}}
-<ul>   Tasks
- 
+  <h2>Tasks</h2>
+   {{#each tasks}}
+    <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
+   
+    
+<select class="custom-select" id="department" name="department" multiple>
+    <option selected>Choose.......................................</option>
+  {{#each departments}}
+    <option value="{{this}}">{{this}}</option>
+  {{/each}}
 
-{{#each data}}
- <li></li>
-Task: {{this.title}} <br>
-Asigned To : {{this.asignedTo.username}} <br></li>
-{{/each}}  
-  
-</ul>
+<select name="department" id="department" disabled="disabled"></select>
+ {{/each}}  
