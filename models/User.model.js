@@ -1,14 +1,32 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose')
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
-const userSchema = new Schema({
-  username: {
-    type: String,
-    // unique: true -> Ideally, should be unique, but its up to you
+let userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+
+    department: {
+      type: String,
+      enum: ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
+    },
+
+    userType: {
+      type: String,
+      enum: ['Manager', 'Staff']
+    }
   },
-  password: String,
-});
 
-const User = model("User", userSchema);
+  {
+    timestamps: true
+  }
+)
 
-module.exports = User;
+let User = model('User', userSchema)
+module.exports = User
