@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
-const User = require('')
-const Admin = require('')
+const UserModel = require('../models/User.model.js')
+
 
 
 
@@ -11,10 +11,11 @@ const Admin = require('')
 
 // GET ROUTES
 
-
+//!profile, insert multiple profiles
 router.get('/profile', (req, res) => {
-  let user = req.loggedInUser;
-  res.render("/auth/profile.hbs", { user });
+  let user = req.session.loggedInUser;
+  let signupDate = req.session.loggedInUser.signedUp;
+  res.render("/auth/profile.hbs", { user, signupDate });
 })
 
 router.get('/signup', (req, res) => {
@@ -34,15 +35,13 @@ router.get('/main', (req, res, next) => {
   let user = req.loggedInUser; //!session
 
 
-
-
 })
 
 
 
 // POST ROUTES 
 
-router.post('/signup', (req, res) => {
+router.post('/signup', authorizeInput, (req, res) => {
   const { username, password, confPassword } = req.body //confPassword
   let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
     if (!regexPw.test(password)) {
@@ -71,31 +70,35 @@ router.post('/signup', (req, res) => {
 
 })
 
-router.post('/login', )
+router.post('/login', authorizeInput, (req, res, next) => {
+  const { username, password } = req.body
+  User.findOne({ username: username})
+      .then(result => {
+        if (result) {
+          bcrypt.compare(password, result.password)
+              .then(isCope => {
+                if(isCope){
+                  req.session.loggedInUser = result
+                  res.redirect('/home')
+                } else{
+                  res.render('index', { msg: 'incorrect password'})
+                }
+              })
+        } else { // username not existent
+          res.render('index', { msg: 'username not found'})
+        }
+      })
+        .catch(err => next (err))
 
 
+})
 
-
-// !CUSTOM MIDDLEWARES
-// !userInfo
-
-const authorize = (req, res, next) => {
-  /*let 
-  if (req.session.userInfo){
-    next()
-} else {
-  res.redirect('/signin)
-}
-*/
-}
-
-// !Check authorization! CM
 
 // !change password?
 
 // !delete user?
 
-//
+
 
 
 
