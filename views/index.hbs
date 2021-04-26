@@ -2,23 +2,6 @@
 <p>Welcome Ironhacker!</p>
 
 
-{{!-- to be edited --}}
-  <h2>Tasks</h2>
-   {{#each tasks}}
-    <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
-    {{/each}}  
-
-    <a href="/profile"> {{details.title}} </a> <br>
-   
-<h3> {{details.status}} <br>
-{{details.department}} <br>
-{{details.description}} <br>
- {{details.asignedTo.username}} <br>
-{{details.asignedBy.username}} </h3>
-<br>
-<form action="/tasks/{{details.id}}/edit" method="GET">
-<button type="submit" class="bnt btn-outline-dark">Edit</button>
-</form>
-<form action="/tasks/{{details.id}}/delete" method="GET">
-<button type="submit" class="bnt btn-outline-dark">Delete</button>
-</form>
+<form method="POST" action="/login">  <label>Username</label>  <input type="username" name="username" placeholder="Enter your username"  >
+  <label>Password</label>  <input type="password" name="password" placeholder="Enter your Password"  >  <button>log In</button></form>
+{{#if msg}}<div class="error">{{msg}}</div>{{/if}}
