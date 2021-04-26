@@ -1,34 +1,28 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
-const UserModel = require('../models/User.model.js')
+const UserModel = require("../models/User.model")
+const TaskModel = require("../models/Task.model")
+
+
+departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
 
 
 
-
-
-
-
-
-// GET ROUTES
-
-//!profile, insert multiple profiles
 router.get('/profile', (req, res) => {
   let user = req.session.loggedInUser;
   let signupDate = req.session.loggedInUser.signedUp;
   res.render("/auth/profile.hbs", { user, signupDate });
 })
 
-router.get('/signup', (req, res) => {
-  res.render('')
-})
+
 
 router.get('/login', (req, res) => {
-  res.render('')
+  res.render('/')
 })
 
-router.get('/logout', (req, res) => {
-  req.session.destroy() //!session
-  res.redirect('/')
+router.get('/signup', (req, res) => {
+
+  res.render("auth/signup", { departments });
 })
 
 router.get('/main', (req, res, next) => {
@@ -41,7 +35,7 @@ router.get('/main', (req, res, next) => {
 
 // POST ROUTES 
 
-router.post('/signup', authorizeInput, (req, res) => {
+/*router.post('/signup', authorizeInput, (req, res) => {
   const { username, password, confPassword } = req.body //confPassword
   let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
     if (!regexPw.test(password)) {
@@ -66,8 +60,35 @@ router.post('/signup', authorizeInput, (req, res) => {
             }).catch(err => next(err));
         }
         
-      })
+      })*/
 
+
+
+      
+router.post('/signup', (req, res, next) => {
+  const { username, password, department, userType } = req.body
+
+  // password encryption 
+  let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
+  if (!regexPw.test(password)) {
+    res.render('auth/signup.hbs', { departments, msg: 'Password must be 6 characters long, must have a number, and an uppercase Letter' })
+    return
+  }
+  let salt = bcrypt.genSaltSync(12)
+  let hash = bcrypt.hashSync(password, salt)
+
+  UserModel.findOne({ username: username })
+    .then(user => {
+      if (user) {
+        res.render('auth/signup', { departments, msg: 'username is taken' })
+      } else {
+        UserModel.create({ username, password: hash, department, userType })
+          .then(() => {
+            res.redirect("/")
+          }).catch(err => console.log(err));
+      }
+
+    }).catch(err => console.log(err));
 })
 
 router.post('/login', authorizeInput, (req, res, next) => {

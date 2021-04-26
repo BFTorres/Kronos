@@ -30,6 +30,7 @@ app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
+
 app.use(session({
   secret: 'secret',
   saveUninitialized: false,
@@ -38,7 +39,7 @@ app.use(session({
     maxAge: 24*60*60*1000
   },
   store: new MongoStore({
-    mongooseConnection: mongooseConnection
+    mongooseConnection: mongooseConnection,
     ttl: 23 * 60 * 60
   })
 }));
@@ -46,7 +47,12 @@ app.use(session({
 // 👇 Start handling routes here
 const index = require("./routes/index");
 app.use("/", index);
+// Added routes for auth 
+const auth = require("./routes/auth.routes");
+app.use("/", auth);
 
+const task = require("./routes/tasks.routes")
+app.use('/', task)
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
