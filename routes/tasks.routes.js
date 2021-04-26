@@ -50,8 +50,8 @@ router.get('/tasks/:id', (req, res) => {
   TaskModel.findById(id)
     .populate("asignedTo")
     .populate("asignedBy")
-    .then((tasks) => {
-      res.render('auth/task-details', { tasks })
+    .then((details) => {
+      res.render('index', { details })
     }).catch((err) => {
       console.log(err)
     });

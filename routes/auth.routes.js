@@ -93,11 +93,11 @@ router.post('/signup', (req, res, next) => {
 })
 
 
-// router.post('/login', authorizeInput, (req, res, next) => {
-//   const { username, password } = req.body
-//   User.findOne({ username: username })
-//     .then
-// })
+router.post('/login', (req, res, next) => {
+  const { username, password } = req.body
+  User.findOne({ username: username })
+    .then
+})
 
 
 

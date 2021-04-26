@@ -7,5 +7,18 @@
    {{#each tasks}}
     <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
     {{/each}}  
-    
-<div v-bind:class="{ 'mainbox': $route.path == '/profile' }"><h1>hello</h1></div>
+
+    <a href="/profile"> {{details.title}} </a> <br>
+   
+<h3> {{details.status}} <br>
+{{details.department}} <br>
+{{details.description}} <br>
+ {{details.asignedTo.username}} <br>
+{{details.asignedBy.username}} </h3>
+<br>
+<form action="/tasks/{{details.id}}/edit" method="GET">
+<button type="submit" class="bnt btn-outline-dark">Edit</button>
+</form>
+<form action="/tasks/{{details.id}}/delete" method="GET">
+<button type="submit" class="bnt btn-outline-dark">Delete</button>
+</form>
