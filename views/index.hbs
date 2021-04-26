@@ -6,13 +6,6 @@
   <h2>Tasks</h2>
    {{#each tasks}}
     <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
-   
+    {{/each}}  
     
-<select class="custom-select" id="department" name="department" multiple>
-    <option selected>Choose.......................................</option>
-  {{#each departments}}
-    <option value="{{this}}">{{this}}</option>
-  {{/each}}
-
-<select name="department" id="department" disabled="disabled"></select>
- {{/each}}  
+<div v-bind:class="{ 'mainbox': $route.path == '/profile' }"><h1>hello</h1></div>

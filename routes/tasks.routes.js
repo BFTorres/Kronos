@@ -2,10 +2,7 @@ const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const UserModel = require("../models/User.model")
 const TaskModel = require("../models/Task.model")
-let silvi = false;
-function showHideText() {
-  console.log("The function is called when user clicked on the image.");
-};
+
 
 departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
 
@@ -33,26 +30,18 @@ router.post('/new-task', (req, res, next) => {
 
 // READ TASKS 
 // show all tasks and status
-router.get('/tasks', (req, res) => {
-  silvi = false
+router.get('/profile'/*!route name to be changed*/, (req, res) => {
+
   TaskModel.find()
     .populate("asignedTo")
     .then((tasks) => {
-      res.render('index', { tasks, silvi })
+      res.render('index', { tasks })
     }).catch((err) => {
       next(err)
     });
 })
-router.post('/tasks', (req, res) => {
-  silvi = true
-  TaskModel.find()
-    .populate("asignedTo")
-    .then((tasks) => {
-      res.render('index', { tasks, silvi })
-    }).catch((err) => {
-      next(err)
-    });
-})
+
+
 //tasks detailes with edit and delete options 
 // find and show details 
 router.get('/tasks/:id', (req, res) => {
@@ -68,21 +57,45 @@ router.get('/tasks/:id', (req, res) => {
     });
 })
 // update task
-router.post('/tasks/:id', (req, res,) => {
+router.get('/tasks/:id/edit', (req, res) => {
+  const { id } = req.params
+  TaskModel.findById(id)
+    .populate('asignedTo')
+    .populate('asignedBy')
+    .then((tasks) => {
+      UserModel.find()
+        .then((users) => {
+          res.render('auth/task-edit', { tasks, departments, users })
+        }).catch((err) => {
+          next(err)
+        });
+    })
+
+})
+router.post('/tasks/:id/edit', (req, res,) => {
   const { id } = req.params
   const { title, description, department, status, asignedTo, asignedBy } = req.body
 
-  TaskModel.findByIdAndUpdate(id, { title, description, department, status: 'Todo', asignedTo, asignedBy })
+  TaskModel.findByIdAndUpdate(id, { title, description, department, status, asignedTo, asignedBy })
     .then((tasks) => {
-      res.redirect('/tasks')
+      res.redirect('/profile')
     }).catch((err) => {
       next(err)
     });
 })
 
-// router.get('/testing', (req, res) => {
-//   res.render('auth/task-details')
-// })
+// delete
+
+// when delete button is clicked it deletes the task
+router.get('/tasks/:id/delete', (req, res) => {
+  const { id } = req.params
+  TaskModel.findByIdAndDelete(id)
+    .then((result) => {
+      res.redirect('/profile')
+    }).catch((err) => {
+      next(err)
+    });
+})
 
 
 

@@ -3,6 +3,7 @@ const router = require("express").Router();
 const UserModel = require("../models/User.model")
 const TaskModel = require("../models/Task.model")
 
+const statuses = ["Todo", "In Progres", "Done"]
 /* GET home page */
 // const departments = ['FrontOficce', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
 router.get('/', (req, res, next) => {
@@ -13,7 +14,7 @@ router.get('/', (req, res, next) => {
   //   res.redirect('/staff')
   // }
   // } else {
-  res.render('index',);
+  res.render('index', { statuses });
   // }
 });
 
