@@ -3,13 +3,9 @@
 
 
 {{!-- to be edited --}}
-<ul>   Tasks
- 
-
-{{#each data}}
- <li></li>
-Task: {{this.title}} <br>
-Asigned To : {{this.asignedTo.username}} <br></li>
-{{/each}}  
-  
-</ul>
+  <h2>Tasks</h2>
+   {{#each tasks}}
+    <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
+    {{/each}}  
+    
+<div v-bind:class="{ 'mainbox': $route.path == '/profile' }"><h1>hello</h1></div>

@@ -1,0 +1,7 @@
+  Welcome {{user.username}}
+<a href="/new-task">create task</a> 
+  <h2>All Tasks</h2>
+   {{#each tasks}}
+    <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
+    {{/each}}  
+    

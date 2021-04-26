@@ -1,5 +1,5 @@
 
-<form action="/new-task" method="POST">
+<form action="/new-task" method="POST" id="silvi">
   <div class="form">
     <label class="form-label" >Title</label>
     <input type="text" class="form-control" name="title">
@@ -11,16 +11,19 @@
 <div class="input-group-prepend">
     <label class="input-group-text" for="department">Department</label>
   </div>
-  <select class="custom-select" id="department" name="department" multiple>
-    <option selected>Choose.......................................</option>
+  <select class="form-select" id="department" name="department" aria-label="Default select example">
+    <option value="disabled " disabled>Choose Department</option>
   {{#each departments}}
     <option value="{{this}}">{{this}}</option>
   {{/each}}
   </select>
 </div>
 <div> 
-<select class="custom-select" id="inputGroupSelect01" name="asignedTo" multiple>
-    <option selected>Choose...</option>
+
+   <label class="input-group-text" for="department">Assign To:</label>
+  </div>
+<select class="form-select" id="inputGroupSelect01" name="asignedTo" aria-label="Default select example"  >
+  <option value="disabled " disabled>Asign the task to</option>
   {{#each data}}
     <option value="{{this.id}}">{{this.username}}</option>
   {{/each}}

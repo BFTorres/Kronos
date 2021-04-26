@@ -1,0 +1,62 @@
+
+<form action="/tasks/{{tasks.id}}/edit" method="POST" id="tasks">
+  <div class="form">
+    <label class="form-label" value="{{tasks.title}}">Title</label>
+    <input type="text" class="form-control" name="title" value="{{tasks.title}}">
+  </div>
+    <div class="mb-3">
+    <label  class="form-label">Description</label>
+    <input type="text" class="form-control" name="description" value="{{tasks.description}}">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Status</label>
+   <div class="mb-3 form-control">
+  <label  class="form-label"></label> <br>
+   <input type="radio" name="status" value="Todo" checked >
+   <label for="Todo" >To Do</label>
+    <input type="radio" name="status" value="In Progres"  >
+  <label for="In Progress">In Progres</label>
+   <input type="radio" name="status" value="Done" >
+   <label for="Done">Done</label>
+   </div>
+  </div>
+<div class="input-group-prepend">
+    <label class="input-group-text" for="department" >Department</label>
+  </div>
+  <select class="form-select" id="department" name="department" aria-label="Default select example">
+    <option value="disabled " disabled>Choose Department</option>
+  {{#each departments}}
+    <option value="{{this}}">{{this}}</option>
+  {{/each}}
+  </select>
+</div>
+<div> 
+   <label class="input-group-text" for="department">Assign To:</label>
+  </div>
+<select class="form-select" id="inputGroupSelect01" name="asignedTo" aria-label="Default select example"  >
+  <option value="disabled " disabled>Asign the task to</option>
+  {{#each users}}
+    <option value="{{this.id}}">{{this.username}}</option>
+  {{/each}}
+  </select>
+</div>
+<div> 
+   <label class="input-group-text" for="department">Assign By:</label>
+  </div>
+<select class="form-select" id="inputGroupSelect01" name="asignedBy" aria-label="Default select example"  >
+  <option value="disabled " disabled>Created by</option>
+  {{#each users}}
+    <option value="{{this.id}}">{{this.username}}</option>
+  {{/each}}
+  </select>
+</div>
+    
+  <button type="submit">Update</button>
+</div>
+
+{{#if msg}}
+<br>
+<div class="alert alert-danger" role="alert">
+{{msg}}
+</div>
+{{/if}}
