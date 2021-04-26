@@ -35,7 +35,7 @@ router.get('/main', (req, res, next) => {
 
 // POST ROUTES 
 
-/*router.post('/signup', authorizeInput, (req, res) => {
+router.post('/signup', (req, res) => {
   const { username, password, confPassword } = req.body //confPassword
   let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
     if (!regexPw.test(password)) {
@@ -60,9 +60,15 @@ router.get('/main', (req, res, next) => {
             }).catch(err => next(err));
         }
         
-      })*/
+      })
+    })
 
 
+router.post('/login', (req, res, next) => {
+  const { username, password } = req.body
+  User.findOne({ username: username})
+      .then
+})
 
       
 router.post('/signup', (req, res, next) => {
@@ -91,7 +97,7 @@ router.post('/signup', (req, res, next) => {
     }).catch(err => console.log(err));
 })
 
-router.post('/login', authorizeInput, (req, res, next) => {
+router.post('/login',  (req, res, next) => {
   const { username, password } = req.body
   User.findOne({ username: username})
       .then(result => {
@@ -110,9 +116,23 @@ router.post('/login', authorizeInput, (req, res, next) => {
         }
       })
         .catch(err => next (err))
+    })
 
+/*const authorizeInput = (req, res, next) => {
+  let username = req.body.username
+  let password = req.body.password
+ // if (req.session.userInfo){
+   if (!username || !password){
+      res.render('index', {msg: 'please fill in all fields'})
+   
+    
+} else {
+  next()
+  //res.redirect('/signin)
+}
+}
+*/
 
-})
 
 
 // !change password?

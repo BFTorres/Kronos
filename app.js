@@ -27,20 +27,22 @@ app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 
 
 // !SESSION
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
 
+
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 app.use(session({
-  secret: 'secret',
-  saveUninitialized: false,
-  resave: false,
+  secret: process.env.SESSION_KEY,
+  saveUninitialized: false, 
+  resave: false, 
   cookie: {
-    maxAge: 24*60*60*1000
+    maxAge: 24 * 60 * 60 * 1000// in milliseconds
   },
-  store: new MongoStore({
-    mongooseConnection: mongooseConnection,
-    ttl: 23 * 60 * 60
+  store: MongoStore.create({
+    mongoUrl:  process.env.MONGODB_URI || "mongodb://localhost/Kronos",
+    ttl:  24 * 60 * 60 // 1 day => in seconds
   })
 }));
 
