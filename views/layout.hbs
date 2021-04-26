@@ -6,24 +6,32 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{title}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
+      
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+      <link rel="stylesheet" href="/stylesheets/style.css">
    </head>
 
    <body>
-<nav >
-   <a href="/">home</a>  {{!-- will show log in  --}}
-   <a href="/signup">Sign up</a>  {{!-- will show sign up --}}
-   <a href="/new-task">create task</a>
-   <a href="/profile">All tasks</a>
-   <a href="/logout">Logout</a>
-   <a href="/main">Main</a>
-</nav>
-<div v-bind:class="{ 'mainbox': $route.path == '/profile' }"><h1>hello</h1></div>
-      {{{body}}}
-      <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-      <script src="/js/script.js"></script>
+                  <nav>
+                        <a href="/">home</a>  {{!-- will show log in  --}}
+                        {{#if manager}}
+                        <a href="/new-task">create task</a>
+                        <a href="/main">Main</a>
+                        <a href="/manager">profile</a>
+                        <a href="/logout">Logout</a>
+                        {{/if}}
+                        {{#if staff}}
+                        <a href="/main">Main</a>
+                        <a href="/staff">profile</a>
+                        <a href="/logout">Logout</a>
+                        {{/if}}
+                  </nav>
+      
+         {{{body}}}
+
+               <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+               <script src="/js/script.js"></script>
    </body>
 
 </html>

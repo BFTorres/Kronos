@@ -81,13 +81,11 @@ router.get("/main", (req, res, next) => {
   let staff = false;
   if (user && user.userType == "Manager") {
     manager = true;
-  } else if (user && user.userType == "Staff"){
+  } else if (user && user.userType == "Staff") {
     staff = true;
   }
   res.render("auth/main.hbs", { manager, staff });
 });
-
-
 
 router.get("/staff", (req, res) => {
   let user = req.session.loggedInUser;
@@ -118,7 +116,7 @@ router.post("/login", validateEmpty, (req, res, next) => {
           if (isMatching) {
             req.app.locals.isUserLoggedIn = true;
             req.session.loggedInUser = user;
-            res.redirect("/main")
+            res.redirect("/main");
           } else {
             res.render("index.hbs", {
               msg: "Username or Password incorrect!",
