@@ -14,6 +14,7 @@ departments = [
   "Engineering",
   "HumanRessources",
 ];
+let isTodo = false, isInProgres = false, isDone = false;
 
 // Validation
 const validateEmpty = (req, res, next) => {
@@ -84,20 +85,66 @@ router.get("/main", (req, res, next) => {
   } else if (user && user.userType == "Staff") {
     staff = true;
   }
-  res.render("auth/main.hbs", { manager, staff });
+  res.render("auth/main.hbs", { manager, staff, user });
 });
 
 
 
 router.get("/staff", (req, res) => {
   let user = req.session.loggedInUser;
-  //let signupDate = req.session.loggedInUser;
-  res.render("auth/staff-profile.hbs");
+  TaskModel.find()
+    .populate('asignedTo')
+    .then((tasks) => {
+      let doneTasks = [], pending = [], todo = [], myTasks = []
+      for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].asignedTo.username == user.username) {
+          myTasks.push(tasks[i])
+          if (tasks[i].status == "In Progres") {
+            isInProgres = true
+            pending.push(tasks[i])
+          } else if (tasks[i].status == "Done") {
+            isDone = true
+            doneTasks.push(tasks[i])
+          } else {
+            isTodo = true
+            todo.push(tasks[i])
+          }
+        }
+      }
+      res.render("auth/staff-profile.hbs", { user, todo, isTodo, isInProgres, isDone, pending, doneTasks, myTasks });
+    })
+    .catch((err) => {
+      console.log(err)
+    });
+
+
 });
 
 router.get("/manager", (req, res, next) => {
   let user = req.session.loggedInUser;
-  res.render("auth/manager-profile.hbs");
+  TaskModel.find()
+    .then((tasks) => {
+      let doneTasks = []
+      let pending = []
+      let todo = []
+      for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].status == "In Progres") {
+          isInProgres = true
+          pending.push(tasks[i])
+        } else if (tasks[i].status == "Done") {
+          isDone = true
+          doneTasks.push(tasks[i])
+        } else {
+          isTodo = true
+          todo.push(tasks[i])
+        }
+      }
+      res.render("auth/manager-profile.hbs", { user, todo, isTodo, isInProgres, isDone, pending, doneTasks });
+    })
+    .catch((err) => {
+      console.log(err)
+    });
+
 });
 
 // POST ROUTES

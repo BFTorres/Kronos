@@ -19,7 +19,6 @@
   </select>
 </div>
 <div> 
-
    <label class="input-group-text" for="department">Assign To:</label>
   </div>
 <select class="form-select" id="inputGroupSelect01" name="asignedTo" aria-label="Default select example"  >
@@ -29,7 +28,10 @@
   {{/each}}
   </select>
 </div>
-    
+  <div class="mb-3">
+    <label  class="form-label">Assigned By</label>
+    <input type="text" class="form-control" name="asignedBy" placeholder="{{user.username}}" disabled>
+  </div>
   <button type="submit">Create</button>
 </div>
 

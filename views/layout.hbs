@@ -12,16 +12,26 @@
    </head>
 
    <body>
-<nav >
-   <a href="/">home</a>  {{!-- will show log in  --}}
-   <a href="/signup">Sign up</a>  {{!-- will show sign up --}}
-   <a href="/new-task">create task</a>
-   <a href="/profile">All tasks</a>
-   <a href="/logout">Logout</a>
-   <a href="/main">Main</a>
-</nav>
+<nav class="navbar navbar-dark bg-dark">
+   <a class="navbar-brand nav-link active" aria-current="page" href="/">Home</a>  {{!-- will show log in  --}}
+   {{!-- <a class="navbar-brand nav-link active" aria-current="page"" href="/signup">Sign up</a>  will show sign up --}}
 
+   {{#if manager}}
+<a class="navbar-brand nav-link active" aria-current="page" href="/manager">Profile</a>
+ <a class="navbar-brand nav-link active" aria-current="page" href="/new-task">Add Task</a>
+ <a class="navbar-brand nav-link active" aria-current="page" href="/logout">Logout</a>
+{{/if}}
+
+{{#if staff}}
+<a class="navbar-brand nav-link active" aria-current="page" href="/staff">Profile</a>
+<a class="navbar-brand nav-link active" aria-current="page" href="/logout">Logout</a>
+{{/if}}
+  
+   
+</nav>
+<div class="body">
       {{{body}}}
+</div>
       <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
       <script src="/js/script.js"></script>
    </body>

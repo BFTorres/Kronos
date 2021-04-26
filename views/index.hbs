@@ -7,4 +7,11 @@
    <input type="password" name="password" placeholder="Enter your Password"  > 
     <button>log In</button>
     </form>
-{{#if msg}}<div class="error">{{msg}}</div>{{/if}}
+
+    <a href="/signup">Sign up</a>
+{{#if msg}}
+<br>
+<div class="alert alert-danger" role="alert">
+{{msg}}
+</div>
+{{/if}}

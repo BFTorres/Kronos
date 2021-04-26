@@ -5,15 +5,18 @@ const TaskModel = require("../models/Task.model")
 
 
 departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
-
+let isTasks = false;
 //CREATE NEW TASK 
 router.get('/new-task', (req, res) => {
-
+  let user = req.session.loggedInUser;
   UserModel.find()
     .then((data) => {
-      res.render('auth/new-task.hbs', { data, departments })
+      if (!user && user.userType == "Manager") {
+        res.redirect('/')
+      }
+      res.render('task/new-task.hbs', { data, departments, user })
     })
-    .catch(err => next(err))
+    .catch(err => console.log(err))
 
 })
 
@@ -22,7 +25,7 @@ router.post('/new-task', (req, res, next) => {
 
   TaskModel.create({ title, description, department, status: 'Todo', asignedTo, asignedBy })
     .then((tasks) => {
-      res.redirect('/tasks')
+      res.redirect('/manager')
     }).catch((err) => {
       next(err)
     });
@@ -30,14 +33,21 @@ router.post('/new-task', (req, res, next) => {
 
 // READ TASKS 
 // show all tasks and status
-router.get('/profile'/*!route name to be changed*/, (req, res) => {
-
+router.get('/tasks'/*!route name to be changed*/, (req, res) => {
+  let isTasks = false
   TaskModel.find()
     .populate("asignedTo")
-    .then((tasks) => {
-      res.render('index', { tasks })
+    .then((allTasks) => {
+      if (req.session.loggedInUser.userType == "Manager") {
+        isTasks = true
+        res.render('auth/manager-profile', { allTasks, isTasks })
+      } else if (req.session.loggedInUser.userType == "Staff") {
+        isTasks = true
+        res.render('auth/staff-profile', { allTasks, isTasks })
+      }
+
     }).catch((err) => {
-      next(err)
+      console.log(err)
     });
 })
 
@@ -51,7 +61,7 @@ router.get('/tasks/:id', (req, res) => {
     .populate("asignedTo")
     .populate("asignedBy")
     .then((details) => {
-      res.render('index', { details })
+      res.render('task/task-details', { details, silvi })
     }).catch((err) => {
       console.log(err)
     });
@@ -78,7 +88,7 @@ router.post('/tasks/:id/edit', (req, res,) => {
 
   TaskModel.findByIdAndUpdate(id, { title, description, department, status, asignedTo, asignedBy })
     .then((tasks) => {
-      res.redirect('/profile')
+      res.redirect('/main')
     }).catch((err) => {
       next(err)
     });
