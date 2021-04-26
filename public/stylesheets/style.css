@@ -10,7 +10,8 @@ body {
   font: 14px 'Nunito', sans-serif;
 
   height: 100%;
-  background-color: #050033;
+  
+  background-color: #03001a;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -111,7 +112,7 @@ form {
   max-width: 300px;
   margin: 10px auto;
   padding: 10px 20px;
-  background: #f4f7f8;
+  background: #8f9496;
   border-radius: 8px;
 }
 
@@ -160,13 +161,13 @@ select {
 button {
   padding: 19px 39px 18px 39px;
   color: #FFF;
-  background-color: #4bc970;
+  background-color: #a35e04;
   font-size: 18px;
   text-align: center;
   font-style: normal;
   border-radius: 5px;
   width: 100%;
-  border: 1px solid #3ac162;
+  border: 1px solid #a35e04;
   border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
