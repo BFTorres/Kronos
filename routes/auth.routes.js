@@ -7,19 +7,26 @@ const TaskModel = require("../models/Task.model")
 departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
 
 
+// Validation
+const validateEmpty = (req, res, next) => {
+  const { username, password } = req.body;
 
+  if (!username || !password) {
+    res.render("auth/signup.hbs", { msg: "Please fill all the fields !" });
+  } else {
+    next();
+  }
+};
+
+
+// PRIVATE ROUTES
 router.get('/profile', (req, res) => {
   let user = req.session.loggedInUser;
-  let signupDate = req.session.loggedInUser.signedUp;
-  res.render("/auth/profile.hbs", { user, signupDate });
+  //let signupDate = req.session.loggedInUser;
+  res.render("/auth/profile.hbs", { user });
+    
 })
 
-
-
-// !NOt Needed cause is the '/' route or "index.hbs"
-// router.get('/login', (req, res) => {
-//   res.render('/')
-// })
 
 router.get('/signup', (req, res) => {
 
@@ -28,51 +35,16 @@ router.get('/signup', (req, res) => {
 
 router.get('/main', (req, res, next) => {
   let user = req.loggedInUser; //!session
-
-
+  res.render("auth/main.hbs")
 })
 
 
 
 // POST ROUTES 
 
-router.post('/signup', (req, res) => {
-  const { username, password, confPassword } = req.body //confPassword
-  let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
-    if (!regexPw.test(password)) {
-      res.render('index', {msg: 'Password must be 6 characters long, must have a number, and an uppercase Letter'})
-      return
-    }
-    if (password !== confirmPassword) {
-      res.render('index', {msg: 'Passwords do not match'})
-      return
-    }
-    let salt = bcrypt.genSaltSync(12)
-    let hash = bcrypt.hashSync(password, salt)
 
-    User.findOne({ username: username })
-      .then(user => {
-        if (user) {
-          res.render('index', { msg: 'username is taken'})
-        }else{
-          User.create({ username, password: hash })
-            .then(() => {
-              res.render("index.hbs", { msg: "signup has been successful"})
-            }).catch(err => next(err));
-        }
-        
-      })
-    })
-
-
-router.post('/login', (req, res, next) => {
-  const { username, password } = req.body
-  User.findOne({ username: username})
-      .then
-})
-
-      
-router.post('/signup', (req, res, next) => {
+// post signup
+router.post('/signup', validateEmpty, (req, res, next) => {
   const { username, password, department, userType } = req.body
 
   // password encryption 
@@ -98,41 +70,42 @@ router.post('/signup', (req, res, next) => {
     }).catch(err => console.log(err));
 })
 
-router.post('/login',  (req, res, next) => {
-  const { username, password } = req.body
-  User.findOne({ username: username})
-      .then(result => {
-        if (result) {
-          bcrypt.compare(password, result.password)
-              .then(isCope => {
-                if(isCope){
-                  req.session.loggedInUser = result
-                  res.redirect('/home')
-                } else{
-                  res.render('index', { msg: 'incorrect password'})
-                }
-              })
-        } else { // username not existent
-          res.render('index', { msg: 'username not found'})
-        }
-      })
-        .catch(err => next (err))
-    })
 
-/*const authorizeInput = (req, res, next) => {
-  let username = req.body.username
-  let password = req.body.password
- // if (req.session.userInfo){
-   if (!username || !password){
-      res.render('index', {msg: 'please fill in all fields'})
-   
+
+
+
+    /* POST Login credentials */
+router.post("/login", validateEmpty, (req, res, next) => {
+  const { username, password } = req.body;
+
+  UserModel.findOne({ username })
+    .then((user) => {
+      if (!user) {
+        res.render("index", {
+          msg: "Username or Password incorrect!",
+        });
+      } else {
+        // check if password is correct
+        bcrypt.compare(password, user.password).then((isMatching) => {
+          if (isMatching) {
+            req.app.locals.loggedInUser = true;
+            req.session.loggedInUser = user;
+            res.redirect("/main");
+          } else {
+            res.render("index.hbs", {
+              msg: "Username or Password incorrect!",
+            });
+          }
+        });
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
     
-} else {
-  next()
-  //res.redirect('/signin)
-}
-}
-*/
+
+
 
 
 

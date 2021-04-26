@@ -28,8 +28,6 @@ app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 
 // !SESSION
 
-
-
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 

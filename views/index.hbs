@@ -2,10 +2,6 @@
 <p>Welcome Ironhacker!</p>
 
 
-{{!-- to be edited --}}
-  <h2>Tasks</h2>
-   {{#each tasks}}
-    <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
-    {{/each}}  
-    
-<div v-bind:class="{ 'mainbox': $route.path == '/profile' }"><h1>hello</h1></div>
+<form method="POST" action="/login">  <label>Username</label>  <input type="username" name="username" placeholder="Enter your username"  >
+  <label>Password</label>  <input type="password" name="password" placeholder="Enter your Password"  >  <button>log In</button></form>
+{{#if msg}}<div class="error">{{msg}}</div>{{/if}}
