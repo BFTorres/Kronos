@@ -11,11 +11,11 @@
     <label class="input-group-text" for="department">Department</label>
   </div>
   <select class="custom-select" id="department" name="department" multiple>
-    <option selected>Choose.......................................</option>
-      {{#each departments}}
-       <option value="{{this}}">{{this}}</option>
-      {{/each}}
-  
+    <option selected>Choose</option>
+  {{#each departments}}
+    <option value="{{this}}">{{this}}</option>
+  {{/each}}
+  </select>
 </div>
 <div class="mb-3 form-control">
   <label  class="form-label">User Type</label> <br>
@@ -27,7 +27,6 @@
   <button type="submit">Sign Up</button>
   </select>
 </div>
-
   {{#if msg}}
     <br>
     <div class="alert alert-danger" role="alert">

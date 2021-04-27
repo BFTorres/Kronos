@@ -12,23 +12,19 @@
       <link rel="stylesheet" href="/stylesheets/style.css">
    </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
-   <a class="navbar-brand nav-link active" aria-current="page" href="/">Home</a>  {{!-- will show log in  --}}
-   {{!-- <a class="navbar-brand nav-link active" aria-current="page"" href="/signup">Sign up</a>  will show sign up --}}
-      {{#if manager}}
-   <a class="navbar-brand nav-link active" aria-current="page" href="/manager">Profile</a>
-   <a class="navbar-brand nav-link active" aria-current="page" href="/new-task">Add Task</a>
-   <a class="navbar-brand nav-link active" aria-current="page" href="/logout">Logout</a>
-      {{/if}}
-      {{#if staff}}
-   <a class="navbar-brand nav-link active" aria-current="page" href="/staff">Profile</a>
-   <a class="navbar-brand nav-link active" aria-current="page" href="/logout">Logout</a>
-      {{/if}}
-</nav>
-<div class="body">
+   <nav class="navbar navbar-dark bg-dark" >
+     <a class="navbar-brand nav-link active" aria-current="page" href="/">Home</a>  
+     {{#if user}}
+         {{#if staff}}
+           <a class="navbar-brand nav-link active" aria-current="page" href="/staff">Profile</a>
+         {{/if}}
+         {{#if manager}}
+           <a class="navbar-brand nav-link active" aria-current="page" href="/manager">Profile</a>
+           <a class="navbar-brand nav-link active" aria-current="page" href="/new-task">Add Task</a>
+         {{/if}}
+       <a class="navbar-brand nav-link active" aria-current="page" href="/logout">Logout</a>
+       </nav>
       {{{body}}}
-</div>
-      <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
       <script src="/js/script.js"></script>
 </body>
 </html>

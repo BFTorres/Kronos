@@ -1,39 +1,39 @@
 <h1>Welcome {{user.username}}!</h1>
-
-  <h2>All My Tasks</h2>
-  <div class="allTasks">
+   <h2>All My Tasks</h2>
+ <div class="allTasks">
     {{#if isTodo}}
-     <div class="todo" >
-      <h3>To Do</h3>
-     {{#each todo}}
-     <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
-      Task:{{this.title}}| Status:{{this.status}} </a> <br>
-     {{/each}} 
-    </div> 
-   {{/if}}
-  {{#if isInProgres}}
-  <div class="pending" >{{#each pending}}
-    <h3>In Progres</h3>
-    <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
-    Task:{{this.title}}|Status:{{this.status}} </a> <br>
-    {{/each}}  </div>
+      <div>
+       <h3>To Do</h3> 
+        {{#each todo}}
+          <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
+          Task:{{this.title}} | Status:{{this.status}} </a> <br>
+        {{/each}} 
+      </div> 
+    {{/if}}
+    {{#if isInProgres}}
+     <div>
+        <h3>In Progres</h3>
+        {{#each pending}}
+         <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
+         Task:{{this.title}} | Status:{{this.status}} </a> <br>
+        {{/each}}  
+     </div>
     {{else}}
-    <div class="done" >
-    <h3>In Progres</h3>
-    </div>
-  {{/if }}
-   
-    {{#if isDone}}
-    
-      <h3>Done</h3>
-       {{#each doneTasks}}
-    <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
-     Task:  {{this.title}}|Status:{{this.status}}</a> <br>
-    {{/each}} 
-    </div>
+      <div >
+        <h3>In Progres</h3>
+      </div>
+    {{/if }}
+   {{#if isDone}}
+       <div>
+          <h3>Done</h3>
+         {{#each doneTasks}}
+           <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
+           Task:  {{this.title}} |Status:{{this.status}}</a> <br>
+         {{/each}} 
+      </div>
     {{else}}
-    <div class="done" >
-    <h3>Done</h3>
-    </div>
+     <div class="done" >
+       <h3>Done</h3>
+     </div>
     {{/if}}
   </div>

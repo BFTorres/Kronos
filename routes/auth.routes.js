@@ -4,7 +4,8 @@ const UserModel = require("../models/User.model");
 const TaskModel = require("../models/Task.model");
 
 // !!!Manager = Admin, User = Staff
-
+let manager = false;
+let staff = false;
 departments = [
   "FrontOffice",
   "Administration",
@@ -75,21 +76,29 @@ const authorize = (req, res, next) => {
     res.redirect("/");
   }
 };
-
-router.get("/main", (req, res, next) => {
+const userType = (req, res, next) => {
   let user = req.session.loggedInUser; //!session
-  let manager = false;
-  let staff = false;
   if (user && user.userType == "Manager") {
     manager = true;
+    next()
   } else if (user && user.userType == "Staff") {
     staff = true;
+    next()
   }
+
+}
+router.get("/main", userType, (req, res, next) => {
+  let user = req.session.loggedInUser;
   res.render("auth/main.hbs", { manager, staff, user });
 });
 
-router.get("/staff", (req, res) => {
+
+
+router.get("/staff", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
+  if (user.userType != "Staff") {
+    res.redirect('/')
+  }
   TaskModel.find()
     .populate('asignedTo')
     .then((tasks) => {
@@ -109,7 +118,7 @@ router.get("/staff", (req, res) => {
           }
         }
       }
-      res.render("auth/staff-profile.hbs", { user, todo, isTodo, isInProgres, isDone, pending, doneTasks, myTasks });
+      res.render("auth/staff-profile.hbs", { staff, user, todo, isTodo, isInProgres, isDone, pending, doneTasks, myTasks });
     })
     .catch((err) => {
       console.log(err)
@@ -118,13 +127,14 @@ router.get("/staff", (req, res) => {
 
 });
 
-router.get("/manager", (req, res, next) => {
+router.get("/manager", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
+  if (user.userType != "Manager") {
+    res.redirect('/')
+  }
   TaskModel.find()
     .then((tasks) => {
-      let doneTasks = []
-      let pending = []
-      let todo = []
+      let doneTasks = [], pending = [], todo = []
       for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].status == "In Progres") {
           isInProgres = true
@@ -137,7 +147,7 @@ router.get("/manager", (req, res, next) => {
           todo.push(tasks[i])
         }
       }
-      res.render("auth/manager-profile.hbs", { user, todo, isTodo, isInProgres, isDone, pending, doneTasks });
+      res.render("auth/manager-profile.hbs", { manager, user, todo, isTodo, isInProgres, isDone, pending, doneTasks });
     })
     .catch((err) => {
       console.log(err)
