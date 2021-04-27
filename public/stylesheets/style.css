@@ -119,6 +119,7 @@ nav {
   background-color: #3e3d53b2;
   width: 600px;
   padding: 15px;
+  margin: 30px;
 }
 .taskmaker {
   display: flex;

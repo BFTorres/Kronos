@@ -118,7 +118,7 @@ router.get("/staff", userType, (req, res, next) => {
           }
         }
       }
-      res.render("auth/staff-profile.hbs", { staff, user, todo, isTodo, isInProgres, isDone, pending, doneTasks, myTasks });
+      res.render("auth/staff-profile.hbs", { manager, staff, user, todo, isTodo, isInProgres, isDone, pending, doneTasks, myTasks });
     })
     .catch((err) => {
       console.log(err)
