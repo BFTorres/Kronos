@@ -45,9 +45,8 @@
   </div>
 <select class="form-select" id="inputGroupSelect01" name="asignedBy" aria-label="Default select example"  >
   <option value="disabled " disabled>Created by</option>
-  {{#each users}}
-    <option value="{{this.id}}">{{this.username}}</option>
-  {{/each}}
+
+    <option value="{{this.id}}" disabled>{{user.asignedBy}}</option>
   </select>
 </div>
     

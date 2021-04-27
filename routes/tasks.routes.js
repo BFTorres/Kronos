@@ -9,6 +9,9 @@ let isTasks = false;
 //CREATE NEW TASK 
 router.get('/new-task', (req, res) => {
   let user = req.session.loggedInUser;
+  if (user.userType != "Manager") {
+    res.redirect('/')
+  }
   UserModel.find()
     .then((data) => {
       if (!user && user.userType == "Manager") {
@@ -75,7 +78,7 @@ router.get('/tasks/:id/edit', (req, res) => {
     .then((tasks) => {
       UserModel.find()
         .then((users) => {
-          res.render('auth/task-edit', { tasks, departments, users })
+          res.render('task/task-edit', { tasks, departments, users })
         }).catch((err) => {
           next(err)
         });
