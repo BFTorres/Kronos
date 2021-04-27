@@ -1,4 +1,3 @@
-
 <form action="/signup" method="POST">
   <div class="form">
     <label class="form-label" >Name</label>
@@ -13,10 +12,10 @@
   </div>
   <select class="custom-select" id="department" name="department" multiple>
     <option selected>Choose.......................................</option>
-  {{#each departments}}
-    <option value="{{this}}">{{this}}</option>
-  {{/each}}
-  </select>
+      {{#each departments}}
+       <option value="{{this}}">{{this}}</option>
+      {{/each}}
+  
 </div>
 <div class="mb-3 form-control">
   <label  class="form-label">User Type</label> <br>
@@ -25,79 +24,13 @@
    <label for="">Staff</label>
    <input type="radio" name="userType" value="Staff" >
    </div>
-    
   <button type="submit">Sign Up</button>
+  </select>
 </div>
 
-
-
-<!--
- <div class="row">
-    <div class="col-md-12">
-      <form action="index.html" method="post">
-        <h1> Sign Up </h1>
-        
-        <fieldset>
-          <form action="/signup" method="POST">
-          <legend> Your Basic Info</legend>
-        
-          <label for="name">Name:</label>
-          <input type="username" id="name" name="user_name">
-       
-          <label for="password">Password:</label>
-          <input type="password" id="password"       name="user_password">
-
-        
-       
-          
-        </fieldset>
-        <fieldset>  
-
-
-          <label for="">User Type</label>
-          <select id="" name="userType">
-            <optgroup label="Hotel">
-              <option type="radio" value="Manager">Manager</option>
-              <option type="radio" value="Staff">Staff</option>
-              {{#each departments}}
-              <option value="{{this}}">{{this}}</option>
-              {{/each}}
-            </optgroup>
-            
-          </select>
-        
-          <legend> Department</legend>
-        
-        
-         <label for="department"></label>
-          <select id="job" name="">
-            <optgroup label="Hotel">
-              <option value="FrontOffice">Front Office</option>
-              <option value="FoodsBeverage">Foods and Beverage</option>
-              <option value="Administration">Administration</option>
-              <option value="Sales">Sales</option>
-              <option value="Housekeeping">Housekeeping</option>
-              <option value="Engineering">Engineering</option>
-              <option value="HumanRessources">Human Ressources</option>
-              {{#each departments}}
-              <option value="{{this}}">{{this}}</option>
-              {{/each}}
-            </optgroup>
-            
-          </select>
-      
-          </form>
-
-         </fieldset>
-       
-        
-        
-       </form>
-        </div>
-        {{#if msg}}
-<br>
-<div class="alert alert-danger" role="alert">
-{{msg}}
-</div>
-{{/if}}
-      </div>
+  {{#if msg}}
+    <br>
+    <div class="alert alert-danger" role="alert">
+    {{msg}}
+    </div>
+  {{/if}}

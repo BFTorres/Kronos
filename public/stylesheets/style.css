@@ -1,50 +1,42 @@
-/* colors-layout: gold: #a88b17, navy: #050033  */
+/* colors-layout: gold: #a88b17, navy: #03001a  */
 
-html {
-  height: 100vh;
-}
+
 
 body {
   margin: 0;
   padding: 0;
   font: 14px 'Nunito', sans-serif;
-
   height: 100%;
-  
   background-color: #03001a;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
-a {
-  color: #ffffff;
+h1,
+h2,
+h3,
+h4 {
+  color: rgb(173, 132, 26);
 }
-
-/*.form-index {
-  width: 500px;
-  margin: 50 px auto 0;
-  padding: 20 pax;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: right;
-  letter-spacing: .2em;
-}*/
-
-.Start {
-  
+.start {
   margin: 0;
+  width: 50%;
   padding: 2em;
   display: flex;
-  width: 50%;
   flex-direction: auto;
   justify-content: center;
   align-items: auto;
-  background: #050033;
+  background: #03001a;
+}
+
+.start-form {
+  display: flex;
+  align-items:flex-start;   
+  justify-content: 700px;
+  
 }
 
 .mainbox {
-  background-color: #050033;
+  background-color: #03001a;
   margin: auto;
   height: 600px;
   width: 1000px;
@@ -83,13 +75,22 @@ a {
   width: 75%;
 }
 
-a {
-  text-decoration: none;
+p {
   color: white;
 }
 
-a:hover {
-  text-decoration: underline;
+.allTasks {
+  display: flex;
+  justify-content: space-around;
+  background-color: #312a75;
+  padding-top: 20px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 
@@ -100,11 +101,11 @@ a:hover {
 
 /*!! Index, SignUp */
 
-*, *:before, *:after {
+/**, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+}*/
 
 
 
@@ -123,14 +124,6 @@ h1 {
 
 input[type="username"],
 input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
 textarea,
 select {
   background: rgba(255,255,255,0.1);
@@ -169,7 +162,6 @@ button {
   width: 100%;
   border: 1px solid #a35e04;
   border-width: 1px 1px 3px;
-  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
 }
 
