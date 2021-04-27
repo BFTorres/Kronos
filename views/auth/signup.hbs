@@ -1,4 +1,4 @@
-<<!--
+
 <form action="/signup" method="POST">
   <div class="form">
     <label class="form-label" >Name</label>
@@ -28,15 +28,10 @@
     
   <button type="submit">Sign Up</button>
 </div>
--->
-{{#if msg}}
-<br>
-<div class="alert alert-danger" role="alert">
-{{msg}}
-</div>
-{{/if}}
 
 
+
+<!--
  <div class="row">
     <div class="col-md-12">
       <form action="index.html" method="post">
@@ -44,7 +39,7 @@
         
         <fieldset>
           <form action="/signup" method="POST">
-          <legend><span class="number">1</span> Your Basic Info</legend>
+          <legend> Your Basic Info</legend>
         
           <label for="name">Name:</label>
           <input type="username" id="name" name="user_name">
@@ -71,11 +66,11 @@
             
           </select>
         
-          <legend><span class="number">2</span> Department</legend>
+          <legend> Department</legend>
         
         
-         <label for="job">Hotel</label>
-          <select id="job" name="user_job">
+         <label for="department"></label>
+          <select id="job" name="">
             <optgroup label="Hotel">
               <option value="FrontOffice">Front Office</option>
               <option value="FoodsBeverage">Foods and Beverage</option>
@@ -90,12 +85,19 @@
             </optgroup>
             
           </select>
-          
+      
           </form>
+
          </fieldset>
        
-        <button type="submit">Sign Up</button>
+        
         
        </form>
         </div>
+        {{#if msg}}
+<br>
+<div class="alert alert-danger" role="alert">
+{{msg}}
+</div>
+{{/if}}
       </div>
