@@ -121,6 +121,7 @@ nav {
   background-color: #3e3d53b2;
   width: 600px;
   padding: 15px;
+  margin: 30px;
 }
 .taskmaker {
   display: flex;
@@ -146,7 +147,7 @@ nav {
   box-sizing: border-box;
 }*/
 
-
+/*
 
 form {
   max-width: 300px;
@@ -236,7 +237,7 @@ label.light {
   text-align: center;
   text-shadow: 0 1px 0 rgba(255,255,255,0.2);
   border-radius: 100%;
-}
+}*/
 
 @media screen and (min-width: 480px) {
 
