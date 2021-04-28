@@ -1,5 +1,4 @@
 /* colors-layout: gold: #a88b17, navy: #050033  */
-
 body {
   margin-top: 49.2px;
   padding-top: 10px;
@@ -7,11 +6,7 @@ body {
   height: 100%;
   background-color: #03001a;
   background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
-
 h1,
 h2,
 h3,
@@ -19,25 +14,6 @@ h4 {
   color: rgb(173, 132, 26);
   text-align: center;
 }
-.Start {
-  margin: 0;
-  padding: 2em;
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #03001a;
-}
-
-/* .mainbox {
-  background-color: #03001a;
-  margin: auto;
-  height: 600px;
-  width: 1000px;
-  position: relative;
-} */
-
 .err,
 .err2 {
   color: #ffffff;
@@ -76,7 +52,7 @@ p {
 .allTasks {
   display: flex;
   justify-content: space-around;
-  background-color: #242246b2;
+  background-color: #1c1c57b2;
   padding-top: 20px;
 }
 .form,
@@ -90,12 +66,6 @@ p {
   width: 500px;
   margin: 10px;
 }
-.list-group-item {
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-}
 #details {
   display: flex;
   flex-direction: column;
@@ -103,7 +73,6 @@ p {
   justify-content: space-around;
   text-align: center;
 }
-
 nav {
   position: fixed !important;
   top: 0px;
@@ -116,17 +85,38 @@ nav {
   margin: 10px 0 30px 0;
 }
 .infobox {
-  background-color: #3e3d53b2;
+  background-color: #1c1c57b2;
   width: 600px;
   padding: 15px;
   margin: 30px;
 }
 .taskmaker {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   margin: 10px;
-  background: #3e3d53b2;
+  background: #1c1c57b2;
   width: 600px;
   padding: 15px;
+}
+.section1 {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.login {
+  background: #1c1c57b2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 600px;
+  height: 500px;
+  color: goldenrod;
+}
+.loginform {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
 }
