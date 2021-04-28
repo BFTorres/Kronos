@@ -1,18 +1,25 @@
-<h1>{{title}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
-
-
-{{!-- to be edited --}}
-  <h2>Tasks</h2>
-   {{#each tasks}}
-    <a href="/tasks/{{this.id}}">  Task:  {{this.title}}         |         Status:      {{this.status}} </a> <br>
-   
-    
-<select class="custom-select" id="department" name="department" multiple>
-    <option selected>Choose.......................................</option>
-  {{#each departments}}
-    <option value="{{this}}">{{this}}</option>
-  {{/each}}
-
-<select name="department" id="department" disabled="disabled"></select>
- {{/each}}  
+  <div class="section1">
+    <div><img src="/images/dribbble-2-removebg-preview.png" alt="logo" ></div>
+  <div class="taskmaker">
+    <form class="taskmaker" style="background-color: transparent;" action="/login" method="POST">
+    <h3>Log In</h3>
+   <div class="form">
+    <label class="form-label" >Username</label>
+    <input type="text" class="form-control" name="username">
+  </div>
+    <div class="mb-3 form">
+    <label  class="form-label">Password</label>
+    <input type="password" class="form-control" name="password">
+  </div>  
+  <button  style='background:goldenrod;font-weight: bolder; padding:15px 30px' class="btn" type="submit"><b>Log In</b></button>
+    </form>
+    <h4>Create an account here</h4>
+      <a style='background:goldenrod;font-weight: bolder;'class="btn" href="/signup">Sign up</a>
+  </div>  
+ </div>
+{{#if msg}}
+<br>
+<div class="alert alert-danger" role="alert">
+{{msg}}
+</div>
+{{/if}}

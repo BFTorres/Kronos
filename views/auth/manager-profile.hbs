@@ -1,0 +1,54 @@
+<h1>  Welcome {{user.username}}</h1>
+<a href="/new-task" class="btn btn-outline-light">Create task</a> 
+  <h2>All Tasks</h2>
+  <div class="allTasks">
+    {{#if isTodo}}
+     <div>
+      <h3>To Do</h3>
+     {{#each todo}}
+     <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
+      Task:{{this.title}}| Status:{{this.status}} </a> <br>
+     {{/each}} 
+    </div> 
+   {{/if}}
+  {{#if isInProgres}}
+  <div>
+    <h3>In Progres</h3>
+    {{#each pending}}
+    <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
+    Task:{{this.title}}|Status:{{this.status}} </a> <br>
+    {{/each}}  </div>
+    {{else}}
+    <div >
+    <h3>In Progres</h3>
+    </div>
+  {{/if }}
+   
+    {{#if isDone}}
+     <div >
+    <h3>Done</h3>
+    {{#each doneTasks}}
+    <a href="/tasks/{{this.id}}" class="list-group-item list-group-item-action list-group-item-dark">
+     Task:  {{this.title}}|Status:{{this.status}}</a> <br>
+    {{/each}} 
+    </div>
+    {{else}}
+    <div class="done" >
+    <h3>Done</h3>
+    </div>
+    {{/if}}
+  </div>
+
+   <p>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-bs-target
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+  </div>
+</div>
