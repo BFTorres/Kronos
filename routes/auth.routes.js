@@ -194,5 +194,17 @@ router.get("/logout", (req, res, next) => {
 // !change password?
 
 // !delete user?
+router.get("/test", (req, res, next) => {
 
+  // let user = req.session.loggedInUser;
+  TaskModel.find()
+    .then((tasks) => {
+
+      res.render("test.hbs", { tasks });
+    })
+    .catch((err) => {
+      console.log(err)
+    });
+
+});
 module.exports = router;
