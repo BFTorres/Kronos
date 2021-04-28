@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
   if (req.session.loggedInUser) res.redirect('/main');
   else res.render("index");
 });
-  
+
 
 router.post('/', (req, res, next) => {
   

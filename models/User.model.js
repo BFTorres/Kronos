@@ -22,7 +22,6 @@ let userSchema = new Schema(
       enum: ['Manager', 'Staff']
     }
   },
-
   {
     timestamps: true
   }
