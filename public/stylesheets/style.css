@@ -1,9 +1,11 @@
 /* colors-layout: gold: #a88b17, navy: #03001a  */
 
-
+@font-face {
+  font-family: Phosphate;
+  src: url('/fonts/PhosphatePro-Inline.otf');
+}
 
 body {
- 
   margin-top: 49.2px;
   padding-top: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -18,6 +20,36 @@ h4 {
   color: rgb(173, 132, 26);
   text-align: center;
 }
+
+.todo-column {
+  border-radius: 2vh;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+.inprogress-column {
+  border-radius: 2vh;
+  background-color: rgba(141, 139, 139, 0.5);
+}
+.done-column {
+  border-radius: 2vh;
+  background-color: rgba(115, 255, 0, 0.5);
+}
+
+.main-title {
+  font-family: Phosphate;
+  
+  text-decoration:;
+  font-size: 70px;
+  color:white;
+  text-align: center;
+}
+
+.main-pic-msg {
+  color: white;
+  font-size: 15px;
+  /*color: rgb(173, 132, 26);
+  text-shadow: 1px 1px black;*/
+}
+
 .err,
 .err2 {
   color: #ffffff;
@@ -56,7 +88,7 @@ p {
 .allTasks {
   display: flex;
   justify-content: space-around;
-  background-color: #1c1c57b2;
+  
   padding-top: 20px;
 }
 .form,
@@ -143,6 +175,7 @@ nav {
 
 
 .header{
+  
   position:relative;
   overflow:hidden;
   display:flex;
@@ -178,7 +211,7 @@ nav {
     transform: translateZ(0);
   /*background:#1B2030 url(https://unsplash.it/1999/999?image=1063) top center no-repeat;
   */
-  background:#1B2030 url("/images/nippon2.jpeg") top center no-repeat;
+  background:#1B2030 url("/images/nippon1.jpeg") top center no-repeat;
   background-size:cover;
   background-attachment:fixed;
   animation: grow 60s  linear 10ms infinite;
@@ -200,7 +233,6 @@ nav {
   box-sizing:border-box
 }
 .sides, .info{
-
   flex: 0 0 auto;
   width:50%
 }
@@ -215,11 +247,12 @@ nav {
   font-size:0.7em
 }
 .meta2{
+  color: white;
   font-style:italic;
 }
 @keyframes grow{
   0% { transform:scale(1)}
-  30% { transform:scale(1.2)}
+  30% { transform:scale(1.5)}
 }
 .content{  
   padding:5% 10%;
