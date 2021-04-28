@@ -18,15 +18,15 @@ departments = [
 let isTodo = false, isInProgres = false, isDone = false;
 
 // Validation
-const validateEmpty = (req, res, next) => {
-  const { username, password } = req.body;
+// const validateEmpty = (req, res, next) => {
+//   const { username, password } = req.body;
 
-  if (!username || !password) {
-    res.render("auth/signup.hbs", { msg: "Please fill all the fields !" });
-  } else {
-    next();
-  }
-};
+//   if (!username || !password) {
+//     res.render("auth/signup.hbs", { msg: "Please fill all the fields !" });
+//   } else {
+//     next();
+//   }
+// };
 
 //** ROUTES SIGNUP**/
 
@@ -36,7 +36,7 @@ router.get("/signup", (req, res) => {
 });
 
 //* post signup  *//
-router.post("/signup", validateEmpty, (req, res, next) => {
+router.post("/signup", (req, res, next) => {
   const { username, password, department, userType } = req.body;
 
   // password encryption
@@ -69,7 +69,7 @@ router.post("/signup", validateEmpty, (req, res, next) => {
 // PRIVATE ROUTES
 
 const authorize = (req, res, next) => {
-  console.log("See I'm here");
+
   if (req.session.loggedInUser) {
     next();
   } else {
@@ -85,7 +85,6 @@ const userType = (req, res, next) => {
     staff = true;
     next()
   }
-
 }
 router.get("/main", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
@@ -94,18 +93,17 @@ router.get("/main", userType, (req, res, next) => {
 
 
 
-router.get("/staff", userType, (req, res, next) => {
+router.get("/staff", (req, res) => {
+
   let user = req.session.loggedInUser;
-  if (user.userType != "Staff") {
-    res.redirect('/')
-  }
+
   TaskModel.find()
-    .populate('asignedTo')
+    .populate('asingedTo')
     .then((tasks) => {
-      let doneTasks = [], pending = [], todo = [], myTasks = []
+      let doneTasks = [], pending = [], todo = []
       for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].asignedTo.username == user.username) {
-          myTasks.push(tasks[i])
+
+        if (tasks[i].asignedTo == user._id) {
           if (tasks[i].status == "In Progres") {
             isInProgres = true
             pending.push(tasks[i])
@@ -118,19 +116,18 @@ router.get("/staff", userType, (req, res, next) => {
           }
         }
       }
-      res.render("auth/staff-profile.hbs", { manager, staff, user, todo, isTodo, isInProgres, isDone, pending, doneTasks, myTasks });
+      res.render("auth/staff-profile.hbs", { manager, user, todo, isTodo, isInProgres, isDone, pending, doneTasks });
     })
     .catch((err) => {
       console.log(err)
     });
-
 
 });
 
 router.get("/manager", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
   if (user.userType != "Manager") {
-    res.redirect('/')
+    res.redirect('/staff')
   }
   TaskModel.find()
     .then((tasks) => {
@@ -158,7 +155,8 @@ router.get("/manager", userType, (req, res, next) => {
 // POST ROUTES
 
 //* POST Login credentials *//
-router.post("/login", validateEmpty, (req, res, next) => {
+// login 
+router.post("/login", (req, res, next) => {
   const { username, password } = req.body;
 
   UserModel.findOne({ username })

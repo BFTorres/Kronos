@@ -1,56 +1,52 @@
 
-<form action="/tasks/{{tasks.id}}/edit" method="POST" id="tasks">
-  <div class="form">
+<div class="section1" style="margin-top: 0px;">
+  <div class="taskmaker">
+    <form action="/tasks/{{tasks.id}}/edit" method="POST" id="tasks">
+   <h3>Edit the task</h3>
+  <div class="mb-3 form">
     <label class="form-label" value="{{tasks.title}}">Title</label>
     <input type="text" class="form-control" name="title" value="{{tasks.title}}">
   </div>
-    <div class="mb-3">
+    <div class="mb-3 form">
     <label  class="form-label">Description</label>
-    <input type="text" class="form-control" name="description" value="{{tasks.description}}">
+    <input  type="text" class="form-control" name="description" value="{{tasks.description}}">
   </div>
-  <div class="mb-3">
-    <label  class="form-label">Status</label>
-   <div class="mb-3 form-control">
-  <label  class="form-label"></label> <br>
-   <input type="radio" name="status" value="Todo" checked >
-   <label for="Todo" >To Do</label>
-    <input type="radio" name="status" value="In Progres"  >
-  <label for="In Progress">In Progres</label>
-   <input type="radio" name="status" value="Done" >
-   <label for="Done">Done</label>
-   </div>
+  <div class="mb-3 form">
+    <label  class="form-label">Status</label> <br>
+     <input class="form-check-input" type="radio" name="status" value="Todo" checked >
+    <label class="form-check-label"  for="Todo" >To Do</label>
+     <input  class="form-check-input" type="radio" name="status" value="In Progres"  >
+    <label class="form-check-label"  for="In Progress">In Progres</label>
+     <input class="form-check-input" type="radio" name="status" value="Done" >
+    <label class="form-check-label"  for="Done">Done</label>
   </div>
-<div class="input-group-prepend">
-    <label class="input-group-text" for="department" >Department</label>
+<div class="mb-3 form">
+    <label class="form-label" for="department" >Department</label>
   </div>
-  <select class="form-select" id="department" name="department" aria-label="Default select example">
+  <select  class="form-select selector"  name="department" aria-label="Default select example">
     <option value="disabled " disabled>Choose Department</option>
   {{#each departments}}
     <option value="{{this}}">{{this}}</option>
   {{/each}}
   </select>
-</div>
-<div> 
-   <label class="input-group-text" for="department">Assign To:</label>
+<div class="form-label"> 
+   <label class="form-label" for="department">Assign To:</label>
   </div>
-<select class="form-select" id="inputGroupSelect01" name="asignedTo" aria-label="Default select example"  >
+<select class="form-select selector" id="inputGroupSelect01" name="asignedTo" aria-label="Default select example"  >
   <option value="disabled " disabled>Asign the task to</option>
+  <option value="{{tasks.asignedTo.id}}" >{{tasks.asignedTo.username}} </option>
+
   {{#each users}}
     <option value="{{this.id}}">{{this.username}}</option>
   {{/each}}
   </select>
-</div>
-<div> 
-   <label class="input-group-text" for="department">Assign By:</label>
-  </div>
-<select class="form-select" id="inputGroupSelect01" name="asignedBy" aria-label="Default select example"  >
-  <option value="disabled " disabled>Created by</option>
-
-    <option value="{{this.id}}" disabled>{{user.asignedBy}}</option>
-  </select>
+<div>
+<button style='background:goldenrod;font-weight: bolder;'class="btn" type="submit">Update</button>
 </div>
     
-  <button type="submit">Update</button>
+  
+</div>
+  </div>
 </div>
 
 {{#if msg}}

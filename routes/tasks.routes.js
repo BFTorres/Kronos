@@ -5,7 +5,7 @@ const TaskModel = require("../models/Task.model")
 
 
 departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
-let isTasks = false;
+
 //CREATE NEW TASK 
 router.get('/new-task', (req, res) => {
   let user = req.session.loggedInUser;
@@ -13,6 +13,7 @@ router.get('/new-task', (req, res) => {
     res.redirect('/')
   }
   UserModel.find()
+    .populate('asignedTo')
     .then((data) => {
       if (!user && user.userType == "Manager") {
         res.redirect('/')
@@ -20,31 +21,33 @@ router.get('/new-task', (req, res) => {
       res.render('task/new-task.hbs', { data, departments, user })
     })
     .catch(err => console.log(err))
-
 })
 
-router.post('/new-task', (req, res, next) => {
+router.post('/new-task', (req, res) => {
   const { title, description, department, status, asignedTo, asignedBy } = req.body
+  let user = req.session.loggedInUser;
 
-  TaskModel.create({ title, description, department, status: 'Todo', asignedTo, asignedBy })
+  TaskModel.create({ title, description, department, status: 'Todo', asignedTo, asignedBy: user })
+
     .then((tasks) => {
       res.redirect('/manager')
     }).catch((err) => {
-      next(err)
+      console.log(err)
     });
 })
 
 // READ TASKS 
 // show all tasks and status
 router.get('/tasks'/*!route name to be changed*/, (req, res) => {
+  let user = req.session.loggedInUser;
   let isTasks = false
   TaskModel.find()
     .populate("asignedTo")
     .then((allTasks) => {
-      if (req.session.loggedInUser.userType == "Manager") {
+      if (user.userType == "Manager") {
         isTasks = true
         res.render('auth/manager-profile', { allTasks, isTasks })
-      } else if (req.session.loggedInUser.userType == "Staff") {
+      } else if (user.userType == "Staff") {
         isTasks = true
         res.render('auth/staff-profile', { allTasks, isTasks })
       }
@@ -59,12 +62,12 @@ router.get('/tasks'/*!route name to be changed*/, (req, res) => {
 // find and show details 
 router.get('/tasks/:id', (req, res) => {
   const { id } = req.params
-  silvi = true;
+  let user = req.session.loggedInUser;
   TaskModel.findById(id)
     .populate("asignedTo")
     .populate("asignedBy")
     .then((details) => {
-      res.render('task/task-details', { details, silvi })
+      res.render('task/task-details', { details, user })
     }).catch((err) => {
       console.log(err)
     });
@@ -72,6 +75,7 @@ router.get('/tasks/:id', (req, res) => {
 // update task
 router.get('/tasks/:id/edit', (req, res) => {
   const { id } = req.params
+
   TaskModel.findById(id)
     .populate('asignedTo')
     .populate('asignedBy')
@@ -80,20 +84,22 @@ router.get('/tasks/:id/edit', (req, res) => {
         .then((users) => {
           res.render('task/task-edit', { tasks, departments, users })
         }).catch((err) => {
-          next(err)
+          console.log(err)
         });
     })
 
 })
 router.post('/tasks/:id/edit', (req, res,) => {
   const { id } = req.params
-  const { title, description, department, status, asignedTo, asignedBy } = req.body
-
-  TaskModel.findByIdAndUpdate(id, { title, description, department, status, asignedTo, asignedBy })
+  const { title, description, department, status, asignedTo } = req.body
+  let user = req.session.loggedInUser;
+  TaskModel.findByIdAndUpdate(id, { title, description, department, status, asignedTo, asignedBy: user })
+    .populate('asignedTo')
+    .populate('asignedBy')
     .then((tasks) => {
-      res.redirect('/main')
+      res.redirect('/manager')
     }).catch((err) => {
-      next(err)
+      console.log(err)
     });
 })
 
@@ -104,9 +110,9 @@ router.get('/tasks/:id/delete', (req, res) => {
   const { id } = req.params
   TaskModel.findByIdAndDelete(id)
     .then((result) => {
-      res.redirect('/profile')
+      res.redirect('/manager')
     }).catch((err) => {
-      next(err)
+      console.log(err)
     });
 })
 
