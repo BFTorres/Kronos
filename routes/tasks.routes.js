@@ -58,21 +58,6 @@ router.get('/tasks'/*!route name to be changed*/, (req, res) => {
     });
 })
 
-
-//tasks detailes with edit and delete options 
-// find and show details 
-router.get('/tasks/:id', (req, res) => {
-  const { id } = req.params
-  let user = req.session.loggedInUser;
-  TaskModel.findById(id)
-    .populate("asignedTo")
-    .populate("asignedBy")
-    .then((details) => {
-      res.render('task/task-details', { details, user })
-    }).catch((err) => {
-      console.log(err)
-    });
-})
 // update task
 router.get('/tasks/:id/edit', (req, res) => {
   const { id } = req.params
