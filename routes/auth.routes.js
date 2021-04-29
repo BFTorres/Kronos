@@ -39,8 +39,8 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res, next) => {
   const { username, password, department, userType } = req.body;
 
-  // password encryption
-  let regexPw = /*/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;*/ /^(?=.*\d)(?=.*[a-z])[\w~@#$%^&*+=`|{}:;!.?\"()\[\]-]{8,}$/;
+  // password encryption    /*/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;*/
+  let regexPw = /^(?=.*\d)(?=.*[a-z])[\w~@#$%^&*+=`|{}:;!.?\"()\[\]-]{8,}$/;
   if (!regexPw.test(password)) {
     res.render("auth/signup.hbs", {
       departments,
