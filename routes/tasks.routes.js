@@ -5,7 +5,7 @@ const TaskModel = require("../models/Task.model")
 const InfoGoals = require('../models/InfoGoals.model')
 
 
-departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
+let departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
 
 //CREATE NEW TASK 
 router.get('/new-task', (req, res) => {
