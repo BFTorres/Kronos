@@ -2,6 +2,7 @@ const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const UserModel = require("../models/User.model")
 const TaskModel = require("../models/Task.model")
+const InfoGoals = require('../models/InfoGoals.model')
 
 
 departments = ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
@@ -75,14 +76,18 @@ router.get('/tasks/:id', (req, res) => {
 // update task
 router.get('/tasks/:id/edit', (req, res) => {
   const { id } = req.params
-
+  let user = req.session.loggedInUser;
+  let manager = false
   TaskModel.findById(id)
     .populate('asignedTo')
     .populate('asignedBy')
     .then((tasks) => {
+      if (user.userType == "Manager") {
+        manager = true
+      }
       UserModel.find()
         .then((users) => {
-          res.render('task/task-edit', { tasks, departments, users })
+          res.render('task/task-edit', { tasks, departments, users, manager })
         }).catch((err) => {
           console.log(err)
         });
@@ -115,7 +120,6 @@ router.get('/tasks/:id/delete', (req, res) => {
       console.log(err)
     });
 })
-
 
 
 
