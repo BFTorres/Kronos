@@ -1,0 +1,88 @@
+<h1>Welcome {{user.username}}!</h1>
+   <h2>All My Tasks</h2>
+ <div class="allTasks">
+    {{#if isTodo}}
+     <div>
+        <h3>To Do</h3>
+        {{#each todo}}
+        <div class="dropdown" style="width: 400px; margin: 10px">
+  <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+ Task:{{this.title}}  <br>
+  </button>
+   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><div class="card" style="width: 18rem;">
+   <div class="card-body">
+    <h4 class="card-title"><b>{{this.title}} </b> </h4>
+    <p class="card-text"><h5>Description: {{this.description}} <br></h5></p>
+    <a href="/tasks/{{this.id}}/edit" class="btn btn-primary">Edit</a>
+  </div>
+</div></li>
+  </ul>
+</div>
+        {{/each}}  
+     </div>
+    {{else}}
+      <div >
+        <h3>In Progres</h3>
+      </div>
+    {{/if }}
+    {{#if isInProgres}}
+     <div>
+        <h3>In Progres</h3>
+        {{#each pending}}
+         <div class="dropdown" style="width: 400px; margin: 10px">
+  <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+ Task:{{this.title}}<br>
+  </button>
+   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><div class="card" style="width: 18rem;">
+   <div class="card-body">
+    <h4 class="card-title"><b>{{this.title}} </b> </h4>
+    <p class="card-text"><h5>Description: {{this.description}} <br></h5></p>
+    <a href="/tasks/{{this.id}}/edit" class="btn btn-primary">Edit</a>
+  </div>
+</div></li>
+  </ul>
+</div>
+        {{/each}}  
+     </div>
+    {{else}}
+      <div >
+        <h3>In Progres</h3>
+      </div>
+    {{/if }}
+   {{#if isDone}}
+     <div>
+        <h3>Done</h3>
+        {{#each doneTasks}}
+          <div class="dropdown" style="width: 400px; margin: 10px">
+  <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+ Task:{{this.title}}  <br>
+  </button>
+   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><div class="card" style="width: 18rem;">
+   <div class="card-body">
+    <h4 class="card-title"><b>{{this.title}} </b> </h4>
+    <p class="card-text"><h5> <b>Description:</b> {{this.description}} <br></h5></p>
+    <form action="/tasks/{{this.id}}/edit" method="POST">
+      <select name="status" id="status">
+        <option value="In Progres">In Progres</option>
+        <option value="Todo">To Do</option>
+      </select>
+      <button style="background:goldenrod;font-weight: bolder;" class="btn" type="submit">Update</button>
+    </form>
+  </div>
+</div></li>
+  </ul>
+</div>
+        {{/each}}  
+     </div>
+    {{else}}
+      <div >
+        <h3>In Progres</h3>
+      </div>
+    {{/if }}
+  </div>
+
+
+  

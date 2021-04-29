@@ -1,0 +1,16 @@
+<div id="details">
+    <h2> {{details.title}}</h2> 
+
+<h3>Status:      {{details.status}} <br>
+Department:  {{details.department}} <br>
+Description: {{details.description}} <br>
+Assigned To: {{details.asignedTo.username}} <br>
+</h3>
+<br>
+<div> <form action="/tasks/{{details.id}}/edit" method="GET">
+<button type="submit" class="btn btn-outline-light">Edit</button>
+</form>
+<form action="/tasks/{{details.id}}/delete" method="GET">
+<button type="submit" class="btn btn-outline-light">Delete</button>
+</form></div>
+</div>

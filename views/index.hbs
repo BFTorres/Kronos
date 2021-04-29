@@ -1,0 +1,31 @@
+  <div class="section1">
+    <div><img src="/images/dribbble-2-removebg-preview.png" alt="logo" >
+    <p class="main-title">KRONOS</p></div>
+    
+  <div class="taskmaker">
+    <form class="taskmaker" style="background-color: transparent;" action="/login" method="POST">
+    <h3>Log In</h3>
+   <div class="form">
+    <label class="form-label" >Username</label>
+    <input type="text" class="form-control" name="username">
+  </div>
+    <div class="mb-3 form">
+    <label  class="form-label">Password</label>
+    <input type="password" class="form-control" name="password">
+  </div>  
+  <p></p>
+  <p></p>
+  <button  style='background:goldenrod;font-weight: bolder; padding:15px 30px' class="btn" type="submit"><b>Log In</b></button>
+    </form>
+    <h4>Create an account here</h4>
+      <a class="btn btn-outline-warning" href="/signup"><u>Sign up</u></a>
+    
+  </div>
+       
+ </div>
+{{#if msg}}
+<br>
+<div class="alert alert-danger" role="alert">
+{{msg}}
+</div>
+{{/if}}
