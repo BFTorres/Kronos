@@ -2,7 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const UserModel = require("../models/User.model");
 const TaskModel = require("../models/Task.model");
-
+const InfoGoals = require("../models/InfoGoals.model")
 // !!!Manager = Admin, User = Staff
 let manager = false;
 let staff = false;
@@ -16,17 +16,6 @@ departments = [
   "HumanRessources",
 ];
 let isTodo = false, isInProgres = false, isDone = false;
-
-// Validation
-// const validateEmpty = (req, res, next) => {
-//   const { username, password } = req.body;
-
-//   if (!username || !password) {
-//     res.render("auth/signup.hbs", { msg: "Please fill all the fields !" });
-//   } else {
-//     next();
-//   }
-// };
 
 //** ROUTES SIGNUP**/
 
@@ -88,13 +77,31 @@ const userType = (req, res, next) => {
 }
 router.get("/main", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
-  res.render("auth/main.hbs", { manager, staff, user });
+  InfoGoals.find()
+    .then((data) => {
+      console.log(data)
+      res.render("auth/main.hbs", { manager, staff, user, data })
+    }).catch((err) => {
+
+    });;
 });
+router.post('/main', (req, res) => {
+  const { info, goals } = req.body
 
+  InfoGoals.create({ info, goals })
+    .then(() => { res.redirect('/main') })
+    .catch(err => console.log(err))
 
+})
+//  creating / updaiting the info and goals on main page 
+router.get('/info&goals', (req, res) => {
+  res.render('task/info&goals')
+  InfoGoals.collection.drop()
+
+})
 
 router.get("/staff", (req, res) => {
-
+  const { id } = req.params
   let user = req.session.loggedInUser;
 
   TaskModel.find()
@@ -116,13 +123,28 @@ router.get("/staff", (req, res) => {
           }
         }
       }
-      res.render("auth/staff-profile.hbs", { manager, user, todo, isTodo, isInProgres, isDone, pending, doneTasks });
+      res.render("auth/staff-profile.hbs", { manager, user, todo, isTodo, isInProgres, isDone, pending, doneTasks, tasks });
     })
     .catch((err) => {
       console.log(err)
     });
 
 });
+// post route for editing just status on /staff profile
+router.post('/staff/:id', (req, res) => {
+  const { id } = req.params
+  const { status } = req.body
+  let user = req.session.loggedInUser;
+  TaskModel.findByIdAndUpdate(id, { status })
+    .populate('asignedTo')
+    .populate('asignedBy')
+    .then((tasks) => {
+      res.redirect('/manager')
+    }).catch((err) => {
+      console.log(err)
+    });
+})
+
 
 router.get("/manager", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
@@ -171,7 +193,7 @@ router.post("/login", (req, res, next) => {
           if (isMatching) {
             req.app.locals.isUserLoggedIn = true;
             req.session.loggedInUser = user;
-            res.redirect("/main");
+            res.redirect("/main")
           } else {
             res.render("index.hbs", {
               msg: "Username or Password incorrect!",
@@ -194,17 +216,4 @@ router.get("/logout", (req, res, next) => {
 // !change password?
 
 // !delete user?
-router.get("/test", (req, res, next) => {
-
-  // let user = req.session.loggedInUser;
-  TaskModel.find()
-    .then((tasks) => {
-
-      res.render("test.hbs", { tasks });
-    })
-    .catch((err) => {
-      console.log(err)
-    });
-
-});
 module.exports = router;

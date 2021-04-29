@@ -9,7 +9,7 @@ body {
   margin-top: 49.2px;
   padding-top: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 120%;
+  height: 100%;
   background-color: #03001a;
   background-repeat: no-repeat;
 }
@@ -20,34 +20,6 @@ h4 {
   color: rgb(173, 132, 26);
   text-align: center;
 }
-
-.todo-column {
-  border-radius: 2vh;
-  background-color: rgba(255, 0, 0, 0.5);
-}
-.inprogress-column {
-  border-radius: 2vh;
-  background-color: rgba(141, 139, 139, 0.5);
-}
-.done-column {
-  border-radius: 2vh;
-  background-color: rgba(115, 255, 0, 0.5);
-}
-
-.main-title {
-  font-family: Phosphate;
-  font-size: 70px;
-  color:white;
-  text-align: center;
-}
-
-.main-pic-msg {
-  color: white;
-  font-size: 15px;
-  /*color: rgb(173, 132, 26);
-  text-shadow: 1px 1px black;*/
-}
-
 .err,
 .err2 {
   color: #ffffff;
@@ -85,8 +57,9 @@ p {
 }
 .allTasks {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  
+  background-color: #1c1c57b2;
   padding-top: 20px;
 }
 .form,
@@ -135,7 +108,6 @@ nav {
   width: 600px;
   padding: 15px;
 }
-
 .section1 {
   margin-top: 100px;
   display: flex;
@@ -266,3 +238,13 @@ nav {
   font-weight:600
 }
 
+.card-title {
+  margin-top: -20px;
+  background: #03001a;
+}
+.infogoals {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
