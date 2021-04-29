@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: Phosphate;
-  src: url('/fonts/PhosphatePro-Inline.otf');
+  src: url("/fonts/PhosphatePro-Inline.otf");
 }
 
 body {
@@ -129,113 +129,117 @@ nav {
   align-items: stretch;
 }
 
-
-
 @media screen and (min-width: 480px) {
-
   form {
     max-width: 480px;
   }
-
 }
 
 /*!!! main.hbs css*/
 
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i");
 
-
-.header{
-  
-  position:relative;
-  overflow:hidden;
-  display:flex;
+.header {
+  position: relative;
+  overflow: hidden;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
-  height:50vw;
-  min-height:400px;
-  max-height:550px;
-  min-width:300px;
-  color:#eee;
+  height: 50vw;
+  min-height: 400px;
+  max-height: 550px;
+  min-width: 300px;
+  color: #eee;
 }
-.header:after{
-  content:"";
-  width:100%;
-  height:40%;
-  position:absolute;
-  bottom:0;
-  left:0;
-  z-index:-1;
- background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(27,32,48,1) 100%);
+.header:after {
+  content: "";
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(27, 32, 48, 1) 100%
+  );
 }
-.header:before{
-  content:"";
-  width:100%;
-  height:100%;
-  position:absolute;
-  top:0;
-  left:0;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0) scale(1.0, 1.0);
-    transform: translateZ(0);
+.header:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  transform: translateZ(0);
   /*background:#1B2030 url(https://unsplash.it/1999/999?image=1063) top center no-repeat;
   */
-  background:#1B2030 url("/images/nippon1.jpeg") top center no-repeat;
-  background-size:cover;
-  background-attachment:fixed;
-  animation: grow 60s  linear 10ms infinite;
-  transition:all 0.2s ease-in-out;
-  z-index:-2
+  background: #1b2030 url("/images/nippon1.jpeg") top center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: grow 60s linear 10ms infinite;
+  transition: all 0.2s ease-in-out;
+  z-index: -2;
 }
-.header a{
-  color:#eee
+.header a {
+  color: #eee;
 }
-.logo{
-  border:2px solid #fff;
-  border-radius:3px;
-  text-decoration:none;
-  display:inline-block;
+.logo {
+  border: 2px solid #fff;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-block;
   margin: 20px;
-  padding:5px 10px;
-  font-weight:600;
-  font-size:1.2em;
-  box-sizing:border-box
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 1.2em;
+  box-sizing: border-box;
 }
-.sides, .info{
+.sides,
+.info {
   flex: 0 0 auto;
-  width:50%
+  width: 50%;
 }
-.info{
-  width:100%;
-  padding:15% 10% 0 10%;
-  text-align:center;
-  text-shadow:0 2px 3px rgba(0,0,0,0.2)
+.info {
+  width: 100%;
+  padding: 15% 10% 0 10%;
+  text-align: center;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-.info h4, .meta{
-  font-size:0.7em
+.info h4,
+.meta {
+  font-size: 0.7em;
 }
-.meta2{
+.meta2 {
   color: white;
-  font-style:italic;
+  font-style: italic;
 }
-@keyframes grow{
-  0% { transform:scale(1)}
-  30% { transform:scale(1.5)}
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.5);
+  }
 }
-.content{  
-  padding:5% 10%;
-  text-align:justify
+.content {
+  padding: 5% 10%;
+  text-align: justify;
 }
-.btn{
-  color:#333;
-  border:2px solid;
-  border-radius:3px;
-  text-decoration:none;
-  display:inline-block;
-  padding:5px 10px;
-  font-weight:600
+.btn {
+  color: #333;
+  border: 2px solid;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  font-weight: 600;
 }
 
 .card-title {
@@ -247,4 +251,10 @@ nav {
   align-items: center;
   justify-content: center;
   margin: 20px;
+}
+.main-title {
+  font-family: Phosphate;
+  font-size: 70px;
+  color: white;
+  text-align: center;
 }
