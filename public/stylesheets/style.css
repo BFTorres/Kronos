@@ -5,6 +5,9 @@
   src: url('/fonts/PhosphatePro-Inline.otf');
 }
 
+html { 
+  scroll-behavior: smooth;
+}
 body {
   margin-top: 49.2px;
   padding-top: 10px;
@@ -162,6 +165,10 @@ nav {
 
 .header{
   
+  
+  
+
+
   position:relative;
   overflow:hidden;
   display:flex;
