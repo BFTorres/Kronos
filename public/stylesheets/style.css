@@ -41,6 +41,22 @@ h4 {
   left: 68%;
 }
 
+.main-title {
+  font-family: Phosphate;
+  
+  text-decoration:;
+  font-size: 70px;
+  color:white;
+  text-align: center;
+}
+
+.main-pic-msg {
+  color: white;
+  font-size: 15px;
+  /*color: rgb(173, 132, 26);
+  text-shadow: 1px 1px black;*/
+}
+
 .msg {
   color: aliceblue;
   text-align: center;
