@@ -1,10 +1,12 @@
 <h1 class='main' >Main</h1>
-<div style="background:center; background-size:cover; height:450px; size:inherit; background-image: url(https://media.architecturaldigest.com/photos/5ab53b6e2ed63a101d561e70/16:9/w_2560%2Cc_limit/Tout-Hamburg.jpg) ;"></div>
+
 <div class="main2">
   <div class="infobox">
+{{#each data}}
 <h4>General info </h4> <br>
-<p>INFOMARTION OF THE DAY </p></div>
+<p>{{this.info}} </p></div>
 <div class="infobox">
   <h4>Goals</h4> <br>
-<p>BLABLA GOALS </p></div>
+<p>{{this.goals}} </p></div>
+{{/each}}
   </div>
