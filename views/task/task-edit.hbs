@@ -1,6 +1,7 @@
 <div class="section1" style="margin-top: 0px;">
   <div class="taskmaker">
-    <form action="/tasks/{{tasks.id}}/edit" method="POST" id="tasks">
+    <form class="taskmaker container" style="background-color: transparent;" action="/tasks/{{tasks.id}}/edit"
+      method="POST" id="tasks">
       <h3>Edit the task</h3>
       <div class="mb-3 form">
         <label class="form-label" value="{{tasks.title}}">Title</label>
@@ -40,13 +41,12 @@
         {{/each}}
       </select>
       <div>
-        <button style='background:goldenrod;font-weight: bolder;' class="btn" type="submit">Update</button>
+        <button style="margin-top: 10px;" class="myBtn" type="submit">Update</button>
       </div>
 
 
   </div>
 </div>
-
 
 {{#if msg}}
 <br>
