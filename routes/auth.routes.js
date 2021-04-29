@@ -4,8 +4,6 @@ const UserModel = require("../models/User.model");
 const TaskModel = require("../models/Task.model");
 const InfoGoals = require("../models/InfoGoals.model")
 // !!!Manager = Admin, User = Staff
-const mainInfo = ''
-const mainGoals = ''
 let manager = false;
 let staff = false;
 departments = [
@@ -30,13 +28,13 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res, next) => {
   const { username, password, department, userType } = req.body;
 
-  // password encryption
-  let regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
+  // password encryption    /*/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;*/
+  let regexPw = /^(?=.*\d)(?=.*[a-z])[\w~@#$%^&*+=`|{}:;!.?\"()\[\]-]{8,}$/;
   if (!regexPw.test(password)) {
     res.render("auth/signup.hbs", {
       departments,
       msg:
-        "Password must be 6 characters long, must have a number, and an uppercase Letter",
+        "Password must be 8 characters long, must have a number, and a special character.",
     });
     return;
   }
@@ -218,5 +216,4 @@ router.get("/logout", (req, res, next) => {
 // !change password?
 
 // !delete user?
-
 module.exports = router;
