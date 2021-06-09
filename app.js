@@ -44,6 +44,8 @@ app.use(session({
   })
 }));
 
+app.use(express.static('public/images')); 
+
 // 👇 Start handling routes here
 const index = require("./routes/index");
 app.use("/", index);

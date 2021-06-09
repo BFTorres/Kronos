@@ -2,20 +2,46 @@
   <div class="sides">
     <a href="#" class="menu"></a></div>
   <div class="info">
-  <p class="main-pic-msg"><p class="main-title">KRONOS</p></p>
-  <a>Hotel Management System</a>
+  <h1 class="main-pic-msg"><p class="main-title">KRONOS</h1>
+  <h2>Hotel Management System</h2>
   </div>
 </div>
+
 <div class="main2">
-  <div class="infobox">
-{{#each data}}
-<h4>General info </h4> <br>
-<p>{{this.info}} </p></div>
-<div class="infobox">
-  <h4>Goals</h4> <br>
-<p>{{this.goals}} </p></div>
-{{/each}}
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+       <div class="infobox">
+      <div class="row">
+        <div class="col-sm-6">
+            {{#each data}}
+            <h2>General info </h2>
+            <p>{{this.info}} </p>
+        </div>
+        
+        <div class="col-sm-6">
+          <img src="/lightbulb-on@2x.png" class="responsive-img infobox-img">
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="infobox">
+      <div class="row">
+        <div class="col-sm-6">
+            <h2>Goals</h2>
+            <p>{{this.goals}} </p>
+        </div>
+            {{/each}} 
+        <div class="col-sm-6">
+          <img src="/rocket@2x.png" alt="icon" class="responsive-img infobox-img" >
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>{{!--  --}}
+
 
 
 <!--

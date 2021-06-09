@@ -1,9 +1,6 @@
-
-const router = require('express').Router()
-const bcrypt = require('bcryptjs')
-const UserModel = require('../models/User.model.js')
-
-
+const router = require("express").Router();
+const bcrypt = require("bcryptjs");
+const UserModel = require("../models/User.model.js");
 
 // !CUSTOM MIDDLEWARES
 // !userInfo
@@ -11,11 +8,11 @@ const UserModel = require('../models/User.model.js')
 // !Check authorization! CM
 const checkSession = (req, res, next) => {
   if (req.session.loggedInUser) {
-    next()
+    next();
   } else {
-    res.redirect('/signin')
+    res.redirect("/signin");
   }
-}
+};
 
 const authorizeInput = (req, res, next) => {
   /* let username = req.body.username
@@ -23,22 +20,19 @@ const authorizeInput = (req, res, next) => {
   const { username, password } = req.body;
   // if (req.session.userInfo){
   if (!username || !password) {
-    res.render('index', { msg: 'please fill in all fields' })
+    res.render("index", { msg: "please fill in all fields" });
   } else {
-    next()
+    next();
     //res.redirect('/signup)
   }
-}
+};
 
-
-
-
-
+/*
+$(document).ready(function() {
+  $('input#input_text, textarea#textarea2').characterCounter();
+});
+*/
 
 //
-
-
-
-
 
 module.exports = { authorizeInput, checkSession };

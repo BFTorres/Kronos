@@ -2,20 +2,22 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const UserModel = require("../models/User.model");
 const TaskModel = require("../models/Task.model");
-const InfoGoals = require("../models/InfoGoals.model")
+const InfoGoals = require("../models/InfoGoals.model");
 // !!!Manager = Admin, User = Staff
 let manager = false;
 let staff = false;
 departments = [
-  "FrontOffice",
+  "Front Office",
   "Administration",
   "Sales",
-  "FoodsBeverage",
+  "Foods Beverage",
   "Housekeeping",
   "Engineering",
-  "HumanRessources",
+  "Human Ressources",
 ];
-let isTodo = false, isInProgres = false, isDone = false;
+let isTodo = false,
+  isInProgres = false,
+  isDone = false;
 
 //** ROUTES SIGNUP**/
 
@@ -33,8 +35,7 @@ router.post("/signup", (req, res, next) => {
   if (!regexPw.test(password)) {
     res.render("auth/signup.hbs", {
       departments,
-      msg:
-        "Password must be 8 characters long, must have a number, and a special character.",
+      msg: "Password must be 8 characters long, must have a number, and a special character.",
     });
     return;
   }
@@ -58,7 +59,6 @@ router.post("/signup", (req, res, next) => {
 // PRIVATE ROUTES
 
 const authorize = (req, res, next) => {
-
   if (req.session.loggedInUser) {
     next();
   } else {
@@ -69,115 +69,152 @@ const userType = (req, res, next) => {
   let user = req.session.loggedInUser; //!session
   if (user && user.userType == "Manager") {
     manager = true;
-    next()
+    next();
   } else if (user && user.userType == "Staff") {
     staff = true;
-    next()
+    next();
   }
-}
+};
 router.get("/main", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
   InfoGoals.find()
     .then((data) => {
-      console.log(data)
-      res.render("auth/main.hbs", { manager, staff, user, data })
-    }).catch((err) => {
-
-    });;
+      console.log(data);
+      res.render("auth/main.hbs", { manager, staff, user, data });
+    })
+    .catch((err) => {
+      next(err);
+    });
 });
-router.post('/main', (req, res) => {
-  const { info, goals } = req.body
+router.post("/main", (req, res) => {
+  const { info, goals } = req.body;
 
   InfoGoals.create({ info, goals })
-    .then(() => { res.redirect('/main') })
-    .catch(err => console.log(err))
+    .then(() => {
+      res.redirect("/main");
+    })
+    .catch((err) => console.log(err));
+    /*InfoGoals.collection.drop();*/
+});
 
-})
-//  creating / updaiting the info and goals on main page 
-router.get('/info&goals', (req, res) => {
-  res.render('task/info&goals')
-  InfoGoals.collection.drop()
+//  creating / updating the info and goals on main page
+router.get("/info&goals", userType, (req, res, next) => {
+  const { info, goals } = req.body;
+  let user = req.session.loggedInUser;
+  res.render("task/info&goals");
+  if (user.userType != "Manager") {
+    res.redirect("/main");
+  };
+  InfoGoals.collection.drop();
+  /*InfoGoals.create({ info, goals })
+    .then(() => {
+      res.redirect("/main");
+    })
+    .catch((err) => console.log(err));*/
+});
 
-})
+
+
+
 
 router.get("/staff", (req, res) => {
-  const { id } = req.params
+  const { id } = req.params;
   let user = req.session.loggedInUser;
 
   TaskModel.find()
-    .populate('asingedTo')
+    .populate("asingedTo")
     .then((tasks) => {
-      let doneTasks = [], pending = [], todo = []
+      let doneTasks = [],
+        pending = [],
+        todo = [];
       for (let i = 0; i < tasks.length; i++) {
-
         if (tasks[i].asignedTo == user._id) {
           if (tasks[i].status == "In Progres") {
-            isInProgres = true
-            pending.push(tasks[i])
+            isInProgres = true;
+            pending.push(tasks[i]);
           } else if (tasks[i].status == "Done") {
-            isDone = true
-            doneTasks.push(tasks[i])
+            isDone = true;
+            doneTasks.push(tasks[i]);
           } else {
-            isTodo = true
-            todo.push(tasks[i])
+            isTodo = true;
+            todo.push(tasks[i]);
           }
         }
       }
-      res.render("auth/staff-profile.hbs", { manager, user, todo, isTodo, isInProgres, isDone, pending, doneTasks, tasks });
+      res.render("auth/staff-profile.hbs", {
+        manager,
+        user,
+        todo,
+        isTodo,
+        isInProgres,
+        isDone,
+        pending,
+        doneTasks,
+        tasks,
+      });
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
     });
-
 });
 // post route for editing just status on /staff profile
-router.post('/staff/:id', (req, res) => {
-  const { id } = req.params
-  const { status } = req.body
+router.post("/staff/:id", (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
   let user = req.session.loggedInUser;
   TaskModel.findByIdAndUpdate(id, { status })
-    .populate('asignedTo')
-    .populate('asignedBy')
+    .populate("asignedTo")
+    .populate("asignedBy")
     .then((tasks) => {
-      res.redirect('/manager')
-    }).catch((err) => {
-      console.log(err)
+      res.redirect("/manager");
+    })
+    .catch((err) => {
+      console.log(err);
     });
-})
-
+});
 
 router.get("/manager", userType, (req, res, next) => {
   let user = req.session.loggedInUser;
   if (user.userType != "Manager") {
-    res.redirect('/staff')
+   res.redirect("/staff");
   }
   TaskModel.find()
     .then((tasks) => {
-      let doneTasks = [], pending = [], todo = []
+      let doneTasks = [],
+        pending = [],
+        todo = [];
       for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].status == "In Progres") {
-          isInProgres = true
-          pending.push(tasks[i])
+          isInProgres = true;
+          pending.push(tasks[i]);
         } else if (tasks[i].status == "Done") {
-          isDone = true
-          doneTasks.push(tasks[i])
+          isDone = true;
+          doneTasks.push(tasks[i]);
         } else {
-          isTodo = true
-          todo.push(tasks[i])
+          isTodo = true;
+          todo.push(tasks[i]);
         }
       }
-      res.render("auth/manager-profile.hbs", { manager, user, todo, isTodo, isInProgres, isDone, pending, doneTasks });
+      return res.render("auth/manager-profile.hbs", {
+        manager,
+        user,
+        todo,
+        isTodo,
+        isInProgres,
+        isDone,
+        pending,
+        doneTasks,
+      });
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
     });
-
 });
 
 // POST ROUTES
 
 //* POST Login credentials *//
-// login 
+// login
 router.post("/login", (req, res, next) => {
   const { username, password } = req.body;
 
@@ -193,7 +230,7 @@ router.post("/login", (req, res, next) => {
           if (isMatching) {
             req.app.locals.isUserLoggedIn = true;
             req.session.loggedInUser = user;
-            res.redirect("/main")
+            res.redirect("/main");
           } else {
             res.render("index.hbs", {
               msg: "Username or Password incorrect!",

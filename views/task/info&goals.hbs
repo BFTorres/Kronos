@@ -1,18 +1,43 @@
-<h1>Update Info & Goals</h1>
-<div class="section1">
+<div id="signup" class="section1">
     <div class="taskmaker">
-        <form  class="taskmaker container" style="background-color: transparent;" action="/main" method="POST">
-            <h3>Update Info</h3>
+        <form  class="taskmaker" style="background-color: transparent;" action="/main" method="POST">
+           
+            <p class="main-title">KRONOS</p>
+            <div class="alert-box"> <img src="/lightning.png" style="width: 9%;padding-right: 5px;">You have to update the daily messages</div>
+
+           <div class="mb-3 container">
+           
+            
+        <label class="form-label">Update Info</label>
+             
             <div class="form-floating infogoals">
                 <textarea rows="10"class="form-control" placeholder="Update info" id="floatingTextarea" name="info"></textarea>
                 <label for="floatingTextarea">Info</label>
+                </div>
+        
             </div>
-            <h3>Update Goals</h3>
+
+            <div class="mb-3 container">
+           
+            
+        <label class="form-label">Update Goals</label>
+            
             <div class="form-floating infogoals">
                 <textarea rows="10" class="form-control" placeholder="Update info" id="floatingTextarea" name="goals"></textarea>
                 <label for="floatingTextarea">Goals</label>
+           
             </div>
-            <button type="submit" class="myBtn">Update</button>
+            </div>
+            
+            <div class="row">
+                
+                 <div class="col s-12">
+                     
+            <button type="submit" class="myBtn login-btn">Update</button>
+            </div>
+            </div>
+            
+            
         </form>
     </div>
 </div>

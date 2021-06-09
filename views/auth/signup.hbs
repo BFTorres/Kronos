@@ -1,8 +1,9 @@
-<div class="section1" style="margin-top: 0;">
+<div id="signup" class="section1">
   <div class="taskmaker">
     <form class="taskmaker" style="background: transparent;" action="/signup" method="POST">
+      <p class="main-title">KRONOS</p>
       <h3>Sign up</h3>
-      <div class=" container">
+      <div class="mb-3 container">
         <label class="form-label">Username</label>
         <input type="text" class="form-control" name="username">
       </div>
@@ -12,22 +13,27 @@
       </div>
       <div class="mb-3 container">
         <label class="form-label" for="department">Department</label>
-      </div>
-      <select class="form-select" name="department" multiple>
+        <select class="form-select" name="department" multiple>
         <option disabled>Choose</option>
         {{#each departments}}
         <option value="{{this}}">{{this}}</option>
         {{/each}}
       </select>
+      </div>
+      
       <div class="mb-3 container">
         <label class="form-label">User Type</label> <br>
         <label class="form-check-label" for="Manager">Manager</label>
         <input class="form-check-input" type="radio" name="userType" value="Manager">
         <label class="form-check-label" for="Staff">Staff</label>
         <input class="form-check-input" type="radio" name="userType" value="Staff">
+      <button  class="myBtn login-btn" type="submit"><b>Sign Up</b></button>
+      <div class="divider"></div>
       </div>
+      
+    <h4>Already have an account? <a href="/">Log in!</a></h4>
 
-      <button  class="myBtn" type="submit">Sign Up</button>
+    
     </form>
   </div>
 </div>

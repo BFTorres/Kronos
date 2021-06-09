@@ -1,22 +1,37 @@
-<h1> Welcome {{user.username}}</h1>
-<div class="section1 " style="margin-top: 0; display:inline; margin-left: 60px">
-  <a href="/new-task"  class="myBtn" type="submit">Create Task</a>
-  <a href="/info&goals"  class="myBtn" type="submit">Update Info &
-    Goals</a>
-</div>
-<div class="allTasks container-fluid">
-  {{#if isTodo}}
-  <div class="taskList">
+<div id="manager" >
+  <div class="manager-content" style="padding-top: 6%;">      
+      <div class=" container" style="min-height: 100vh; padding-bottom: 60px">
+        <div class="row m-0">
+          <div class="col-sm-12 col-md-12 col-lg-12 mt-50">
+             <p class="main-title">KRONOS</p>
+            </div>
+        </div>
+       
+        <div class="row m-0">
+           <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+             <h3> Welcome, {{user.username}}!</h3>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+             <a href="/new-task"  class="myBtn" type="submit">Create Task</a>
+            </div>
+             <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+              <a href="/info&goals"  class="myBtn" type="submit">Update Info & Goals</a>
+            </div>
+         
+        </div>
+       <div class="row m-0">
+         <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+            {{#if isTodo}}
+  
     <h3>To Do</h3>
     {{#each todo}}
-    <div class="dropdown" style="width: 400px; margin: 10px">
-      <button style="border:solid red"class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+    <div class="dropdown login-btn" >
+      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Task:{{this.title}} <br>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h4 class="card-title"><b>{{this.title}} </b> </h4>
               <p class="card-text">
@@ -28,23 +43,26 @@
                 href="/tasks/{{this.id}}/delete">Delete</a>
              </div>
             </div>
-          </div>
+          
         </li>
       </ul>
     </div>
     {{/each}}
-  </div>
+
   {{else}}
-  <div class="taskList">
+  
     <h3>To Do</h3>
-  </div>
-  {{/if }}
-  {{#if isInProgres}}
-  <div class="taskList">
+  
+  {{/if }}           
+    </div>
+             
+         <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+           {{#if isInProgres}}
+  
     <h3>In Progres</h3>
     {{#each pending}}
-    <div class="dropdown" style="width: 400px; margin: 10px">
-      <button style="border:solid blue" class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+    <div class="dropdown login-btn">
+      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Task:{{this.title}}<br>
       </button>
@@ -67,18 +85,21 @@
       </ul>
     </div>
     {{/each}}
-  </div>
+  
   {{else}}
-  <div class="taskList">
+ 
     <h3>In Progres</h3>
-  </div>
+  
   {{/if }}
-  {{#if isDone}}
-  <div class="taskList">
+ </div>
+
+ <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+    {{#if isDone}}
+  
     <h3>Done</h3>
     {{#each doneTasks}}
-    <div class="dropdown" style="width: 400px; margin: 10px">
-      <button style="border:solid green"class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+    <div class="dropdown login-btn" ">
+      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Task:{{this.title}} <br>
       </button>
@@ -101,10 +122,23 @@
       </ul>
     </div>
     {{/each}}
-  </div>
+  
   {{else}}
-  <div class="taskList">
+ 
     <h3>Done</h3>
-  </div>
+ 
   {{/if }}
+   
+ </div>
+
+       </div>
+     
+
+
+       
+  </div>
 </div>
+
+</div>
+
+

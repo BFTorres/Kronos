@@ -7,7 +7,7 @@ const taskSchema = new Schema({
 
   department: {
     type: String,
-    enum: ['FrontOffice', 'Administration', 'Sales', 'FoodsBeverage', 'Housekeeping', 'Engineering', 'HumanRessources']
+    enum: ['Front Office', 'Administration', 'Sales', 'Foods Beverage', 'Housekeeping', 'Engineering', 'Human Ressources']
   },
   status: {
     type: String,

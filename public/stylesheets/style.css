@@ -9,21 +9,16 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  margin-top: 49px;
-  padding-top: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100%;
-  width: 100%;
-  background-color: #03001a;
-  background-repeat: no-repeat;
 }
-h1,
-h2,
-h3,
-h4 {
-  color: rgb(173, 132, 26);
-  text-align: center;
+h3, h4 {
+  color: #ffffff;
 }
+
+.card-title {
+  color: #000;
+}
+
 /* 404 style */
 .err,
 .err2 {
@@ -47,8 +42,6 @@ h4 {
 
 .main-title {
   font-family: Phosphate;
-  
-  text-decoration:;
   font-size: 70px;
   color:white;
   text-align: center;
@@ -77,9 +70,7 @@ p {
 }
 .allTasks {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
-  background-color: #1c1c57b2;
   padding-top: 20px;
 }
 .form,
@@ -87,8 +78,17 @@ p {
   color: rgb(187, 154, 5);
   font-weight: bolder;
   width: 500px;
-  margin: 10px;
+  margin: 10px 0;
+  font-size: 16px;
 }
+label.form-check-label {
+  font-size: 20px;
+  padding-right: 10px;
+}
+input.form-check-input {
+  margin-right: 30px;
+}
+
 .selector {
   width: 500px;
   margin: 10px;
@@ -97,38 +97,79 @@ p {
   width: 400px;
 }
 nav {
-  z-index: 500;
   position: fixed !important;
-  top: 0px;
   width: 100%;
+  display: flex !important;
+}
+.navbar{
+  justify-content: flex-start;
+  padding: 0 60px;
+  z-index: 1;
 }
 
 .main2 {
   display: flex;
-  justify-content: space-around;
-  margin: 10px 0 30px 0;
+  padding: 0 30px;
+  justify-content: center;
 }
+
 .infobox {
-  white-space: pre-wrap;
-  background-color: #1c1c57b2;
-  width: 600px;
-  padding: 15px;
-  margin: 30px;
+    background-color: #1c1c57b2;
+    padding: 15px 20px;
+    margin: 30px;
 }
+
+.infobox-img {
+  margin: 40px 20px 40px 40px;
+  float: right;
+}
+.infobox p{
+  white-space: pre-wrap;
+  font-size: 20px;
+}
+.infobox h2{
+    color: #fff;
+    margin: 1rem 0;
+    border-bottom: 1px solid #fff;
+}
+
+.row{
+  width: 100%;
+}
+
 .taskmaker {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 10px;
+  margin: 0 10px;
   background: #1c1c57b2;
   width: 600px;
   padding: 15px;
 }
+
+#login.container{
+  background-image: url("/public/images/nippon2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .section1 {
-  margin-top: 100px;
   display: flex;
   justify-content: space-evenly;
+}
+
+#login .section1,
+#signup.section1{
+background-image: url('../images/quino-al-mBQIfKlvowM-unsplash.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100vh;
+}
+
+
+.right{
+  float: right;
 }
 .login {
   background: #1c1c57b2;
@@ -158,7 +199,6 @@ nav {
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i");
 
 .header {
-  position: relative;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
@@ -179,25 +219,17 @@ nav {
   bottom: 0;
   left: 0;
   z-index: -1;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(27, 32, 48, 1) 100%
-  );
 }
 .header:before {
   content: "";
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0) scale(1, 1);
   transform: translateZ(0);
-  /*background:#1B2030 url(https://unsplash.it/1999/999?image=1063) top center no-repeat;
-  */
-  background: #1b2030 url("/images/nippon1.jpeg") top center no-repeat;
+  background: #1b2030 url("/images/nippon2.jpeg") top center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   animation: grow 60s linear 10ms infinite;
@@ -246,7 +278,7 @@ a {
     transform: scale(1);
   }
   30% {
-    transform: scale(1.5);
+    transform: scale(2);
   }
 }
 .content {
@@ -263,15 +295,10 @@ a {
   font-weight: 600;
 }
 
-.card-title {
-  margin-top: -20px;
-  background: #03001a;
-}
 .infogoals {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px;
 }
 .main-title {
   font-family: Phosphate;
@@ -287,7 +314,17 @@ a {
   border: unset;
   color: #03001a;
   padding: 15px 25px;
+  width: 100%;
 }
+
+.login-btn{
+margin-top: 35px;
+}
+.form-check-input:checked {
+  background-color: orange;
+  border-color: orange;
+}
+/*!!! später blauen schatten weg machen*/
 .form-check-label {
   color: #eee;
   text-decoration: none;
@@ -300,5 +337,91 @@ a {
   }
 }
 
+.divider{
+border-bottom: 1px solid orange;
+margin: 50px 0 25px;
+}
 
+/*-----------------*/
 
+.pr-50{
+  padding-right: 50px;
+}
+.mr-30{
+  margin-right: 30px;
+}
+.ml-30{
+  margin-left: 30px;
+}
+
+.mt-3{
+  margin-top: 3px;
+}
+
+.mb-50{
+  margin-bottom: 50px;
+}
+
+#manager{
+  background-image: url('../images/quino-al-mBQIfKlvowM-unsplash.jpg');
+ /* background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: transparent;
+  height: 100vh;*/
+  top: 0;
+  left:0;
+  width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  }
+
+.manager-content {
+  display: flex;
+  background: #1c1c57b2;
+  flex-direction: column;
+  margin: 0 15%;
+  width: 70%;
+  overflow: hidden;
+  height: 100%;
+ 
+}
+html{
+  height: 100% !important;
+}
+
+.mt-50{
+  margin: 50px 0 0 0;
+}
+
+.page-footer .footer-copyright {
+  overflow: hidden;
+  min-height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 10px 0px;
+  color: rgba(255,255,255,0.8);
+  background-color: rgba(51,51,51,0.08);
+}
+
+.alert-box {
+  border: 2px solid rgb(207, 109, 17);
+  padding: 10px;
+  width: 96%;
+  border-radius: 6px;
+  margin: 25px 0;
+  font-size: 19px;
+  color: white;
+}
