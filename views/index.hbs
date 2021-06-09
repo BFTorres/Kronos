@@ -1,31 +1,44 @@
-<div id="signup" class="section1">
-  <div class="taskmaker">
-    <form class="taskmaker " style="background-color: transparent;" action="/login" method="POST">
-       <div>
-    <p class="main-title">KRONOS</p>
-  </div> 
-  <h3>Log In</h3>
-      <div class="mb-3 container">
-        <div class=" mb-3 ">
+<div id="login">
+  <div class="row">
+    <div class="col-sm-12 col-md-4 offset-md-4">
+  <form class="taskmaker"  style="padding-top: 6%;" action="/login" method="POST">
+    <div class=" container" style="min-height: 100vh; padding-bottom: 60px">
+       <div class="row m-0">
+          <div class="col-sm-12 col-md-12 col-lg-12 mt-50">
+            <p class="main-title">KRONOS</p>
+          </div>
+        </div>
+        <div class="row m-0">
+          <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
+            <h3>Log In</h3>
+          </div>
+        </div>
+       
+      <div class="row m-0">
+        <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
         <label class="form-label">Username</label>
         <input type="text" class="form-control" name="username">
       </div>
-      <div class="mb-3 ">
+        <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
         <label class="form-label">Password</label>
         <input type="password" class="form-control" name="password">
       </div>
+      </div>
+      <div class="row m-0">
+        <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
       <button class="myBtn login-btn" type="submit"><b>Log
           In</b></button>
           <div class="divider"></div>
   
       </div>
+       <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
           <h4>No Account yet? <a href="/signup">Sign up now!</a></h4>
-
-      
+</div>
+      </div>
     </form>
     
 
-  </div>
+ </div></div> 
 </div></div>
 
 {{#if msg}}

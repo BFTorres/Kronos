@@ -13,6 +13,7 @@ body {
 }
 h3, h4 {
   color: #ffffff;
+  text-align: center;
 }
 
 .card-title {
@@ -133,20 +134,10 @@ nav {
     border-bottom: 1px solid #fff;
 }
 
-.row{
+/*.row{
   width: 100%;
-}
+}*/
 
-.taskmaker {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 10px;
-  background: #1c1c57b2;
-  width: 600px;
-  padding: 15px;
-}
 
 #login.container{
   background-image: url("/public/images/nippon2.jpeg");
@@ -159,7 +150,7 @@ nav {
   justify-content: space-evenly;
 }
 
-#login .section1,
+#login.section1,
 #signup.section1{
 background-image: url('../images/quino-al-mBQIfKlvowM-unsplash.jpg');
 background-size: cover;
@@ -362,7 +353,8 @@ margin: 50px 0 25px;
   margin-bottom: 50px;
 }
 
-#manager{
+#manager,
+#login{
   background-image: url('../images/quino-al-mBQIfKlvowM-unsplash.jpg');
  /* background-size: cover;
   background-repeat: no-repeat;
@@ -386,7 +378,21 @@ margin: 50px 0 25px;
   width: 70%;
   overflow: hidden;
   height: 100%;
- 
+}
+
+
+.taskmaker {
+  display: flex;
+  background: #1c1c57b2;
+  flex-direction: column;
+  /*justify-content: space-around;*/
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+
+}
+.center{
+  float: right;
 }
 html{
   height: 100% !important;
