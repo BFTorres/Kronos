@@ -1,17 +1,29 @@
-<div id="signup" class="section1">
-  <div class="taskmaker">
-    <form class="taskmaker" style="background: transparent;" action="/signup" method="POST">
-      <p class="main-title">KRONOS</p>
+<div id="manager">
+  <div class="row">
+    <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-4 offset-lg-4">
+    <form class="taskmaker" action="/signup" method="POST">
+        <div class=" container" >
+       <div class="row m-0">
+          <div class="col-sm-12 col-md-12 col-lg-12 mt-50">
+            <p class="main-title">KRONOS</p>
+            </div>
+        </div>
+        <div class="row m-0">
+          <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
       <h3>Sign up</h3>
-      <div class="mb-3 container">
+      </div>
+        </div>
+       
+     <div class="row m-0">
+        <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
         <label class="form-label">Username</label>
         <input type="text" class="form-control" name="username">
       </div>
-      <div class="mb-3 container">
+       <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
         <label class="form-label">Password</label>
         <input type="password" class="form-control" name="password">
       </div>
-      <div class="mb-3 container">
+       <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
         <label class="form-label" for="department">Department</label>
         <select class="form-select" name="department" multiple>
         <option disabled>Choose</option>
@@ -21,7 +33,7 @@
       </select>
       </div>
       
-      <div class="mb-3 container">
+       <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
         <label class="form-label">User Type</label> <br>
         <label class="form-check-label" for="Manager">Manager</label>
         <input class="form-check-input" type="radio" name="userType" value="Manager">
@@ -30,13 +42,14 @@
       <button  class="myBtn login-btn" type="submit"><b>Sign Up</b></button>
       <div class="divider"></div>
       </div>
-      
+      <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
     <h4>Already have an account? <a href="/">Log in!</a></h4>
-
+</div></div>
     
     </form>
-  </div>
-</div>
+  </div></div> 
+</div></div>
+
 {{#if msg}}
 <br>
 <div class="alert alert-danger" role="alert">

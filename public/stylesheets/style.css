@@ -1,26 +1,21 @@
 /* colors-layout: gold: #a88b17, navy: #03001a  */
-
 @font-face {
   font-family: Phosphate;
   src: url("/fonts/PhosphatePro-Inline.otf");
 }
-
+/*-------------------------------------------------------------MAIN CLASSES*/
 html { 
   scroll-behavior: smooth;
 }
+
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 h3, h4 {
   color: #ffffff;
   text-align: center;
 }
-
-.card-title {
-  color: #000;
-}
-
-/* 404 style */
+/* -------------------------------------------404 style */
 .err,
 .err2 {
   color: #ffffff;
@@ -29,6 +24,9 @@ h3, h4 {
   left: 20%;
   top: 8%;
 }
+.err2 {
+  left: 68%;
+}
 .far {
   position: absolute;
   font-size: 8.5rem;
@@ -36,23 +34,21 @@ h3, h4 {
   top: 15%;
   color: #ffffff;
 }
-
-.err2 {
-  left: 68%;
+/* -------------------------------------------TITLES */
+.card-title {
+  color: #000;
 }
-
 .main-title {
   font-family: Phosphate;
   font-size: 70px;
   color:white;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .main-pic-msg {
   color: white;
   font-size: 15px;
-  /*color: rgb(173, 132, 26);
-  text-shadow: 1px 1px black;*/
 }
 
 .msg {
@@ -137,7 +133,10 @@ nav {
 /*.row{
   width: 100%;
 }*/
-
+.container{
+  min-height: 100vh; 
+  padding-bottom: 60px;
+}
 
 #login.container{
   background-image: url("/public/images/nippon2.jpeg");
@@ -150,8 +149,8 @@ nav {
   justify-content: space-evenly;
 }
 
-#login.section1,
-#signup.section1{
+#login,
+#signup{
 background-image: url('../images/quino-al-mBQIfKlvowM-unsplash.jpg');
 background-size: cover;
 background-repeat: no-repeat;
@@ -320,20 +319,13 @@ margin-top: 35px;
   color: #eee;
   text-decoration: none;
 }
-@media (max-width: 420px) {
-  body {
-    width: 400px !important;
-    height: 100%;
-    font-size: 12px;
-  }
-}
 
 .divider{
 border-bottom: 1px solid orange;
 margin: 50px 0 25px;
 }
 
-/*-----------------*/
+/*---------HELPERS--------*/
 
 .pr-50{
   padding-right: 50px;
@@ -354,13 +346,9 @@ margin: 50px 0 25px;
 }
 
 #manager,
-#login{
+#login,
+#signup{
   background-image: url('../images/quino-al-mBQIfKlvowM-unsplash.jpg');
- /* background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: transparent;
-  height: 100vh;*/
   top: 0;
   left:0;
   width: 100%;
@@ -369,7 +357,6 @@ margin: 50px 0 25px;
   background-size: cover;
   background-attachment: fixed;
   }
-
 .manager-content {
   display: flex;
   background: #1c1c57b2;
@@ -379,17 +366,14 @@ margin: 50px 0 25px;
   overflow: hidden;
   height: 100%;
 }
-
-
 .taskmaker {
   display: flex;
   background: #1c1c57b2;
   flex-direction: column;
-  /*justify-content: space-around;*/
   align-items: center;
   overflow: hidden;
   height: 100%;
-
+  padding-top: 60px;
 }
 .center{
   float: right;
@@ -397,11 +381,9 @@ margin: 50px 0 25px;
 html{
   height: 100% !important;
 }
-
 .mt-50{
   margin: 50px 0 0 0;
 }
-
 .page-footer .footer-copyright {
   overflow: hidden;
   min-height: 50px;
@@ -431,3 +413,51 @@ html{
   font-size: 19px;
   color: white;
 }
+
+@media (max-width: 767.98px) { 
+  .naviTop{
+    padding: 50px 0 20px 0;
+    font-size: 25px;
+  }
+  .naviMiddle{
+    padding: 20px 0;
+    font-size: 25px;
+  }
+  .naviBottom{
+  padding: 20px 0 50px 0;
+  font-size: 25px;
+  }
+  .naviIMG{
+  margin-left: 60px;
+  }
+  .naviIMGprofile{
+  background-image: url("../images/gears.png");
+  background-repeat: no-repeat;
+    background-size: contain;
+    line-height: 45px;
+  }
+  .naviIMGhome{
+  background-image: url("../images/notebook.png");
+  background-repeat: no-repeat;
+    background-size: contain;
+    line-height: 45px;
+  }
+  .naviIMGlogout{
+  background-image: url("../images/lightbulb-off.png");
+  background-repeat: no-repeat;
+    background-size: contain;
+    line-height: 45px;
+  }
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: transparent !important;
+  }
+  .navbar-toggler:focus {
+  box-shadow: transparent !important;
+  border-color: transparent !important;
+  }
+  .navbar-dark .navbar-toggler {
+  color: transparent;
+  }
+
