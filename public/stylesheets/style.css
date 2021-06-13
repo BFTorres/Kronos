@@ -110,8 +110,12 @@ nav {
 }
 .navbar{
   justify-content: flex-start;
-  padding: 0 60px;
+ 
   z-index: 1;
+}
+
+.navbar-nav a{
+  color: #ffffff !important;
 }
 
 .main2 {
@@ -459,7 +463,7 @@ html{
 
 @media (min-width: 1400px){
 .navi-container, .navi-container-lg, .navi-container-md, .navi-container-sm, .navi-container-xl, .navi-container-xxl {
-    max-width: 1787px;
+    max-width: 1600px;
 }
 }
 
