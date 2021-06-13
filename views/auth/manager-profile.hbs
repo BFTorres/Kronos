@@ -12,7 +12,7 @@
        
         <div class="row m-0">
            <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
-             <h2> Welcome, {{user.username}}!</h2>
+             <h4> Welcome, {{user.username}}!</h4>
           </div>
           <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
              <a href="/new-task"  class="myBtn" type="submit">Create Task</a>
@@ -29,21 +29,25 @@
     <h3>To Do</h3>
     {{#each todo}}
     <div class="dropdown login-btn" >
-      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+      <button class="list-group-item ToDo list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Task:{{this.title}} <br>
+        <span>Task:{{this.title}} </span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
+          
             <div class="card-body">
               <h4 class="card-title"><b>{{this.title}} </b> </h4>
-              <p class="card-text">
-              <h6><b>Description:</b> {{this.description}} <br></h6>
-              </p>
+              <div class="card-text">
+              <h6>Description:</h6> 
+              <p class="dropdown-p">{{this.description}} </p>
+              </div>
              <div class="loginform">
-                <a style="padding: 5px; background:goldenrod;font-weight: bolder;" class="myBtn" href="/tasks/{{this.id}}/edit">Update</a>
-              <a style="padding: 5px; color: white ; background:rgb(218, 32, 32);font-weight: bolder;" class="myBtn"
-                href="/tasks/{{this.id}}/delete">Delete</a>
+                <a class="myBtn" href="/tasks/{{this.id}}/edit">Update</a>
+              
+             </div>
+             <div class="loginform">
+             <a class="myBtn red" href="/tasks/{{this.id}}/delete">Delete</a>
              </div>
             </div>
           
@@ -62,28 +66,31 @@
          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
            {{#if isInProgres}}
   
-    <h3>In Progres</h3>
+    <h3>In Progress</h3>
     {{#each pending}}
     <div class="dropdown login-btn">
-      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+      <button class="list-group-item inProgress list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Task:{{this.title}}<br>
+        <span>Task:{{this.title}} </span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <div class="card" style="width: 18rem;">
+          
             <div class="card-body">
               <h4 class="card-title"><b>{{this.title}} </b> </h4>
-              <p class="card-text">
-              <h6><b>Description:</b> {{this.description}} <br></h6>
-              </p>
-              <div class="loginform">
-                <a style="padding: 5px; background:goldenrod;font-weight: bolder;" class="myBtn" href="/tasks/{{this.id}}/edit">Update</a>
-              <a style="padding: 5px; color: white ; background:rgb(218, 32, 32);font-weight: bolder;" class="myBtn"
-                href="/tasks/{{this.id}}/delete">Delete</a>
+              <div class="card-text">
+              <h6>Description:</h6> 
+              <p class="dropdown-p">{{this.description}} </p>
+              </div>
+             <div class="loginform">
+                <a class="myBtn" href="/tasks/{{this.id}}/edit">Update</a>
+              
+             </div>
+             <div class="loginform">
+             <a class="myBtn red" href="/tasks/{{this.id}}/delete">Delete</a>
              </div>
             </div>
-          </div>
+          
         </li>
       </ul>
     </div>
@@ -101,26 +108,29 @@
   
     <h3>Done</h3>
     {{#each doneTasks}}
-    <div class="dropdown login-btn" ">
-      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+    <div class="dropdown login-btn">
+      <button class="list-group-item Done list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Task:{{this.title}} <br>
+        <span>Task:{{this.title}} </span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <div class="card" style="width: 18rem;">
+          
             <div class="card-body">
               <h4 class="card-title"><b>{{this.title}} </b> </h4>
-              <p class="card-text">
-              <h6> <b>Description:</b> {{this.description}} <br></h6>
-              </p>
+              <div class="card-text">
+              <h6>Description:</h6> 
+              <p class="dropdown-p">{{this.description}} </p>
+              </div>
              <div class="loginform">
-                <a style="padding: 5px; background:goldenrod;font-weight: bolder;" class="myBtn" href="/tasks/{{this.id}}/edit">Update</a>
-              <a style="padding: 5px; color: white ; background:rgb(218, 32, 32);font-weight: bolder;" class="myBtn"
-                href="/tasks/{{this.id}}/delete">Delete</a>
+                <a class="myBtn" href="/tasks/{{this.id}}/edit">Update</a>
+              
+             </div>
+             <div class="loginform">
+             <a class="myBtn red" href="/tasks/{{this.id}}/delete">Delete</a>
              </div>
             </div>
-          </div>
+          
         </li>
       </ul>
     </div>

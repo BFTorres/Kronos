@@ -1,161 +1,176 @@
 <div id="manager" >
-  <div class="manager-content" style="padding-top: 6%;">      
-      <div class=" container" style="min-height: 100vh;">
-        <div class="row">
-
+ <div class="row">
+    <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+      <div >
+        <form class="taskmaker" action="/login" method="POST">
+ <div class=" container">
+        <div class="row m-0">
           <div class="col-sm-12 col-md-12 col-lg-12 mt-50">
-             <p class="main-title">KRONOS</p>
+             <h1>KRONOS</h1>
             </div>
-
+        </div>
+       
+        <div class="row m-0">
            <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
              <h3> Welcome, {{user.username}}!</h3>
           </div>
+          </div>
 
-<div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+ <div class="row m-0">
+         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
             {{#if isTodo}}
 
-          <div class="taskList">
+          
           <h3>To Do</h3>
             {{#each todo}}
       <div class="dropdown login-btn" >
-      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+      <button class="list-group-item ToDo list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Task:{{this.title}} <br>
+        <span>Task:{{this.title}} </span>
       </button>
 
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <div class="card" style="width: 18rem;">
+          
             <div class="card-body">
               <h4 class="card-title"><b>{{this.title}} </b> </h4>
-              <p class="card-text">
-              <h6> <b>Description:</b> {{this.description}} <br></h6>
-              </p>
-              <div class="mb-3">
-                <form action="/staff/{{this.id}}" method="POST">
-                  <label>Status</label> <br>
-
-
-                  <input class="form-check-input" type="radio" name="status" value="Todo" checked>
-                  <label class="form-check-label" style="color: black;" for="Todo">To Do</label>
-
-
-                  <input class="form-check-input" type="radio" name="status" value="In Progres">
-                  <label class="form-check-label" style="color: black;" for="In Progres">In Progres</label>
-
-
-                  <input class="form-check-input" type="radio" name="status" value="Done">
-                  <label class="form-check-label" style="color: black;" for="Done">Done</label>
-
-
+              <div class="card-text">
+              <h6>Description:</h6>
+              <p class="dropdown-p"> {{this.description}}</p>
               </div>
-            </div>
-            <button style="padding: 5px; background:goldenrod;font-weight: bolder;" class="myBtn"
+                <form action="/staff/{{this.id}}" method="POST">
+                  <h6>Status:</h6> 
+                  <ul class="dropdown-list">
+                    <li><input class="form-check-input" type="radio" name="status" value="Todo" checked>
+                        <label class="form-check-label" style="color: black;" for="Todo">To Do</label>
+                    </li>
+                    <li> <input class="form-check-input" type="radio" name="status" value="In Progres">
+                        <label class="form-check-label" style="color: black;" for="In Progres">In Progress</label>
+                    </li>
+                    <li> <input class="form-check-input" type="radio" name="status" value="Done">
+                        <label class="form-check-label" style="color: black;" for="Done">Done</label>
+                    </li>
+                  </ul>
+              <button class="myBtn login-btn"
               type="submit">Update</button>
-          </div>
+            </div>
+          
           </form>
         </li>
       </ul>
       </div>
              {{/each}}
-           </div>
+         
              {{else}}
-       <div class="taskList">
+      
         <h3>To Do</h3>
-        </div>
+        
         {{/if }}
 </div>
 
 
-<div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+ <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
            {{#if isInProgres}}
-
-        <div class="taskList">
-       <h3>In Progres</h3>
+       <h3>In Progress</h3>
           {{#each pending}}
      <div class="dropdown login-btn">
-      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+      <button class="list-group-item inProgress list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Task:{{this.title}}<br>
+        <span>Task:{{this.title}}</span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <div class="card" style="width: 18rem;">
+          
             <div class="card-body">
               <h4 class="card-title"><b>{{this.title}} </b> </h4>
-              <p class="card-text">
-              <h6> <b>Description:</b> {{this.description}} <br></h6>
-              </p>
-              <div class="mb-3">
-                <form action="/staff/{{this.id}}" method="POST">
-                  <label>Status </label> <br>
-                  <input class="form-check-input" type="radio" name="status" value="Todo" checked>
-                  <label class="form-check-label" style="color: black;" for="Todo">To Do</label>
-                  <input class="form-check-input" type="radio" name="status" value="In Progres">
-                  <label class="form-check-label" style="color: black;" for="In Progress">In Progres</label>
-                  <input class="form-check-input" type="radio" name="status" value="Done">
-                  <label class="form-check-label" style="color: black;" for="Done">Done</label>
+              <div class="card-text">
+              <h6>Description:</h6>
+              <p class="dropdown-p"> {{this.description}}</p>
               </div>
+                <form action="/staff/{{this.id}}" method="POST">
+                  <h6>Status:</h6> 
+                  <ul class="dropdown-list">
+                    <li><input class="form-check-input" type="radio" name="status" value="Todo" checked>
+                        <label class="form-check-label" style="color: black;" for="Todo">To Do</label>
+                    </li>
+                    <li> <input class="form-check-input" type="radio" name="status" value="In Progres">
+                        <label class="form-check-label" style="color: black;" for="In Progres">In Progress</label>
+                    </li>
+                    <li> <input class="form-check-input" type="radio" name="status" value="Done">
+                        <label class="form-check-label" style="color: black;" for="Done">Done</label>
+                    </li>
+                  </ul>
+              <button class="myBtn login-btn"
+              type="submit">Update</button>
             </div>
-            <div class="loginform">
-                <a style="padding: 5px; background:goldenrod;font-weight: bolder;" class="myBtn" href="/tasks/{{this.id}}/edit">Update</a>
-          </div>
-          </div>
+          
           </form>
         </li>
       </ul>
     </div>
           {{/each}}
-        </div>
+       
           {{else}}
   
        <h3>In Progres</h3>
           {{/if }}
 </div>    
   
-  <div class="col-sm-12 col-md-12 col-lg-4 login-btn">
+ <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
           {{#if isDone}}
       
-  <div class="taskList">
+  
        <h3>Done</h3>
     {{#each doneTasks}}
     <div class="dropdown login-btn">
-      <button class="list-group-item list-group-item-action list-group-item-dark dropdown-toggle" type="button"
+      <button class="list-group-item Done list-group-item-action list-group-item-dark dropdown-toggle" type="button"
         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Task:{{this.title}} <br>
+        <span>Task:{{this.title}} </span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <div class="card" style="width: 18rem;">
+          
             <div class="card-body">
               <h4 class="card-title"><b>{{this.title}} </b> </h4>
-              <p class="card-text">
-              <h6> <b>Description:</b> {{this.description}} <br></h6>
-              </p>
-              <div class="mb-3">
-                <form action="/staff/{{this.id}}" method="POST">
-                  <label>Status </label> <br>
-                  <input class="form-check-input" type="radio" name="status" value="Todo" checked>
-                  <label class="form-check-label" style="color: black;" for="Todo">To Do</label>
-                  <input class="form-check-input" type="radio" name="status" value="In Progres">
-                  <label class="form-check-label" style="color: black;" for="In Progress">In Progres</label>
-                  <input class="form-check-input" type="radio" name="status" value="Done">
-                  <label class="form-check-label" style="color: black;" for="Done">Done</label>
+              <div class="card-text">
+              <h6>Description:</h6>
+              <p class="dropdown-p"> {{this.description}}</p>
               </div>
-            </div>
-            <button style="padding: 5px; background:goldenrod;font-weight: bolder;" class="myBtn"
+                <form action="/staff/{{this.id}}" method="POST">
+                  <h6>Status:</h6> 
+                  <ul class="dropdown-list">
+                    <li><input class="form-check-input" type="radio" name="status" value="Todo" checked>
+                        <label class="form-check-label" style="color: black;" for="Todo">To Do</label>
+                    </li>
+                    <li> <input class="form-check-input" type="radio" name="status" value="In Progres">
+                        <label class="form-check-label" style="color: black;" for="In Progres">In Progress</label>
+                    </li>
+                    <li> <input class="form-check-input" type="radio" name="status" value="Done">
+                        <label class="form-check-label" style="color: black;" for="Done">Done</label>
+                    </li>
+                  </ul>
+              <button class="myBtn login-btn"
               type="submit">Update</button>
-          </div>
+            </div>
+          
           </form>
         </li>
       </ul>
-    </div>
+    
     {{/each}}
 
   {{else}}
   
     <h3>Done</h3>
-  </div>
+ 
   {{/if }}
 </div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+</div></div>
 </div>

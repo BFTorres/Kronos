@@ -13,9 +13,8 @@ body, p {
 a {
   color: rgb(207, 109, 17) !important;
 }
-
-h2, h3, h4 {
-  color: #ffffff;
+a.myBtn {
+  color: #ffffff !important;
   text-align: center;
 }
 h1 {
@@ -26,9 +25,21 @@ h1 {
 }
 h2{
   font-size: 2em;
+  color: #ffffff;
+  text-align: center
 }
 h3{
   margin-top: 25px;
+  color: #ffffff;
+}
+h4 {
+  color: #ffffff;
+  font-size: 2em;
+}
+h6{
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.25em;
 }
 /* -------------------------------------------404 style */
 .err,
@@ -84,22 +95,22 @@ p {
 .form-label {
   color: rgb(187, 154, 5);
   font-weight: bolder;
-  width: 500px;
-  margin: 10px 0;
+ /* width: 500px;
+  margin: 10px 0;*/
   font-size: 20px;
 }
 label.form-check-label {
   font-size: 20px;
-  padding-right: 10px;
+  padding-right: 30px;
 }
 input.form-check-input {
-  margin-right: 30px;
+  margin-right: 5px;
 }
 
-.selector {
+/*.selector {
   width: 500px;
   margin: 10px;
-}
+}*/
 .taskList {
   width: 400px;
 }
@@ -203,7 +214,7 @@ height: 100vh;
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i");
 
 .header {
-  overflow: hidden;
+ /* overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -214,7 +225,9 @@ height: 100vh;
   max-height: 550px;
   min-width: 300px;
   color: #eee;
+  */
   padding-top: 60px;
+  padding-bottom: 30px;
 }
 .header:after {
   content: "";
@@ -483,3 +496,51 @@ html{
     font-size: 18px;
     letter-spacing: 0.5px;
   }
+  button {
+    border-radius: 10px !important;
+  }
+  .inProgress{
+    background-color: #C49102;
+    color: #ffffff;
+    padding: 25px;
+    font-size: 20px;
+  }
+  .ToDo{
+    background-color:#A52A2A;
+    color: #ffffff;
+    padding: 25px;
+    font-size: 20px;
+  }
+  .Done{
+    background-color:#3B7A57;
+    color: #ffffff;
+    padding: 25px;
+    font-size: 20px;
+  }
+
+  .dropdown-toggle::after {
+    float: right;
+    margin-top: 0.5em;
+}
+.list-group-item-dark.list-group-item-action:focus, .list-group-item-dark.list-group-item-action:hover {
+  color: #ffffff;
+  background-color: rgb(207, 109, 17);
+}
+
+ul.dropdown-menu.show {
+  width: 100%;
+}
+.dropdown-list{
+list-style: none;
+padding-left: 0px;
+padding-top: 20px;
+}
+.dropdown-p{
+  font-size: 20px;
+  color: #000000;
+}
+
+.red{
+  background-color:#A52A2A;
+  margin-top: 10px ;
+}
