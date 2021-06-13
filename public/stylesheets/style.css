@@ -10,6 +10,9 @@ html {
 body, p {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+a {
+  color: rgb(207, 109, 17) !important;
+}
 
 h2, h3, h4 {
   color: #ffffff;
@@ -207,6 +210,7 @@ height: 100vh;
   max-height: 550px;
   min-width: 300px;
   color: #eee;
+  padding-top: 60px;
 }
 .header:after {
   content: "";
@@ -451,6 +455,12 @@ html{
     background-size: contain;
     line-height: 45px;
   }
+}
+
+@media (min-width: 1400px){
+.navi-container, .navi-container-lg, .navi-container-md, .navi-container-sm, .navi-container-xl, .navi-container-xxl {
+    max-width: 1787px;
+}
 }
 
 .navbar-dark .navbar-toggler {
