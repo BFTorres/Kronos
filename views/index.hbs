@@ -13,7 +13,12 @@
             <h2>Log In</h2>
           </div>
         </div>
-       
+          {{#if msg}}
+<br>
+<div class="alert alert-danger" role="alert">
+  {{msg}}
+</div>
+{{/if}}
       <div class="row m-0">
         <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
         <label class="form-label">Username</label>
@@ -32,18 +37,10 @@
   
       </div>
        <div class="col-sm-12 col-md-12 col-lg-12 login-btn">
-          <h4>No Account yet? <a href="/signup">Sign up now!</a></h4>
+          <h4 class="ta-c">No Account yet? <a href="/signup">Sign up now!</a></h4>
 </div>
       </div>
     </form>
-    
-
  </div></div> 
-</div></div>
-
-{{#if msg}}
-<br>
-<div class="alert alert-danger" role="alert">
-  {{msg}}
 </div>
-{{/if}}
+</div>

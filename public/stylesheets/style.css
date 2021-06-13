@@ -95,8 +95,6 @@ p {
 .form-label {
   color: rgb(187, 154, 5);
   font-weight: bolder;
- /* width: 500px;
-  margin: 10px 0;*/
   font-size: 20px;
 }
 label.form-check-label {
@@ -107,10 +105,6 @@ input.form-check-input {
   margin-right: 5px;
 }
 
-/*.selector {
-  width: 500px;
-  margin: 10px;
-}*/
 .taskList {
   width: 400px;
 }
@@ -155,9 +149,6 @@ nav {
     border-bottom: 1px solid #fff;
 }
 
-/*.row{
-  width: 100%;
-}*/
 .container{
   min-height: 100vh; 
   padding-bottom: 60px;
@@ -182,7 +173,6 @@ background-repeat: no-repeat;
 height: 100vh;
 }
 
-
 .right{
   float: right;
 }
@@ -203,29 +193,9 @@ height: 100vh;
   width: 100%;
 }
 
-/* @media screen and (min-width: 480px) {
-  form {
-    max-width: 480px;
-  }
-} */
-
-/*!!! main.hbs css*/
-
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i");
 
 .header {
- /* overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
-  height: 50vw;
-  min-height: 400px;
-  max-height: 550px;
-  min-width: 300px;
-  color: #eee;
-  */
   padding-top: 60px;
   padding-bottom: 30px;
 }
@@ -247,7 +217,7 @@ height: 100vh;
   left: 0;
   -webkit-transform: translateZ(0) scale(1, 1);
   transform: translateZ(0);
-  background: #1b2030 url("/images/nippon2.jpeg") top center no-repeat;
+  background: #1b2030 url("../images/quino-al-mBQIfKlvowM-unsplash.jpg") top center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   animation: grow 60s linear 10ms infinite;
@@ -553,4 +523,8 @@ a .myBtn{
   padding: 15px 25px;
   width: 100%;
   font-size: 20px;
+}
+
+.ta-c{
+  text-align: center;
 }
