@@ -544,3 +544,13 @@ padding-top: 20px;
   background-color:#A52A2A;
   margin-top: 10px ;
 }
+a .myBtn{
+  background-color: rgb(207, 109, 17);
+  font-weight: bolder;
+  border-radius: 10px;
+  border: unset;
+  color: #ffffff;
+  padding: 15px 25px;
+  width: 100%;
+  font-size: 20px;
+}
