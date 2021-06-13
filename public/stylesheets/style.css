@@ -19,12 +19,12 @@ a.myBtn {
 }
 h1 {
   font-family: Phosphate;
-  font-size: 70px;
+  font-size: 50px;
   color: white;
   text-align: center;
 }
 h2{
-  font-size: 2em;
+  font-size: 1.5em;
   color: #ffffff;
   text-align: center
 }
@@ -65,8 +65,6 @@ h6{
   color: #000;
 }
 
-
-
 .main-pic-msg {
   color: white;
   font-size: 15px;
@@ -95,14 +93,14 @@ p {
 .form-label {
   color: rgb(187, 154, 5);
   font-weight: bolder;
-  font-size: 20px;
+  font-size: 16px;
 }
 label.form-check-label {
-  font-size: 20px;
-  padding-right: 30px;
+  font-size: 16px;
+  padding-right: 5px;
 }
 input.form-check-input {
-  margin-right: 5px;
+  margin-right: 30px;
 }
 
 .taskList {
@@ -296,13 +294,13 @@ a {
   border-radius: 10px;
   border: unset;
   color: #ffffff;
-  padding: 15px 25px;
+  padding: 10px 25px;
   width: 100%;
   font-size: 20px;
 }
 
 .login-btn{
-margin-top: 35px;
+margin-top: 15px;
 }
 .form-check-input:checked {
   background-color: orange;
