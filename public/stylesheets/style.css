@@ -7,13 +7,25 @@
 html { 
   scroll-behavior: smooth;
 }
-
-body {
+body, p {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-h3, h4 {
+
+h2, h3, h4 {
   color: #ffffff;
   text-align: center;
+}
+h1 {
+  font-family: Phosphate;
+  font-size: 70px;
+  color: white;
+  text-align: center;
+}
+h2{
+  font-size: 2em;
+}
+h3{
+  margin-top: 25px;
 }
 /* -------------------------------------------404 style */
 .err,
@@ -38,13 +50,8 @@ h3, h4 {
 .card-title {
   color: #000;
 }
-.main-title {
-  font-family: Phosphate;
-  font-size: 70px;
-  color:white;
-  text-align: center;
-  margin-bottom: 20px;
-}
+
+
 
 .main-pic-msg {
   color: white;
@@ -76,7 +83,7 @@ p {
   font-weight: bolder;
   width: 500px;
   margin: 10px 0;
-  font-size: 16px;
+  font-size: 20px;
 }
 label.form-check-label {
   font-size: 20px;
@@ -113,7 +120,7 @@ nav {
 .infobox {
     background-color: #1c1c57b2;
     padding: 15px 20px;
-    margin: 30px;
+    margin: 30px 0;
 }
 
 .infobox-img {
@@ -290,21 +297,17 @@ a {
   align-items: center;
   justify-content: center;
 }
-.main-title {
-  font-family: Phosphate;
-  font-size: 70px;
-  color: white;
-  text-align: center;
-}
+
 
 .myBtn {
   background-color: rgb(207, 109, 17);
   font-weight: bolder;
   border-radius: 10px;
   border: unset;
-  color: #03001a;
+  color: #ffffff;
   padding: 15px 25px;
   width: 100%;
+  font-size: 20px;
 }
 
 .login-btn{
@@ -461,3 +464,8 @@ html{
   color: transparent;
   }
 
+  .option-font{
+    padding: 5px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
