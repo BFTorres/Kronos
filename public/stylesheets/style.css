@@ -294,14 +294,36 @@ a {
   border-radius: 10px;
   border: unset;
   color: #ffffff;
-  padding: 10px 25px;
+  padding: 25px 25px;
   width: 100%;
   font-size: 20px;
+}
+
+.myBtn:hover {
+  backface-visibility: hidden;
+  opacity: 0.3;
 }
 
 .login-btn{
 margin-top: 15px;
 }
+
+.login-click {
+  background-color: rgb(207, 109, 17);
+  font-weight: bolder;
+  border-radius: 10px;
+  border: unset;
+  color: #ffffff;
+  padding: 15px 25px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.login-click:hover {
+  backface-visibility: hidden;
+  opacity: 0.3;
+}
+
 .form-check-input:checked {
   background-color: orange;
   border-color: orange;
@@ -468,19 +490,25 @@ html{
     border-radius: 10px !important;
   }
   .inProgress{
-    background-color: #C49102;
+    /* background-color: #C49102; */
+    background-color: transparent;
+    border-color: #C49102;
     color: #ffffff;
     padding: 25px;
     font-size: 20px;
   }
   .ToDo{
-    background-color:#A52A2A;
+    /* background-color:#A52A2A; */
+    background-color: transparent;
+    border-color: #A52A2A;
     color: #ffffff;
     padding: 25px;
     font-size: 20px;
   }
   .Done{
-    background-color:#3B7A57;
+    /* background-color:#3B7A57; */
+    background-color: transparent;
+    border-color: #3B7A57;
     color: #ffffff;
     padding: 25px;
     font-size: 20px;
@@ -526,3 +554,8 @@ a .myBtn{
 .ta-c{
   text-align: center;
 }
+
+.ta-l{
+  text-align: left;
+}
+
